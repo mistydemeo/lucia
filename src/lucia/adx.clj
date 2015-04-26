@@ -135,3 +135,8 @@
   "Returns the sample rate of File `f`."
   [f]
   (take-uint (read-bytes-be f 8 4)))
+
+(defn sample-count
+  "Returns the number of samples in File `f`."
+  [f]
+  (take-uint (read-bytes-be f 0xc 4)))
