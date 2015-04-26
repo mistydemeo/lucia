@@ -125,3 +125,8 @@
   MultimediaWiki says this is always 500Hz in practice."
   [f]
   (take-ushort (read-bytes-be f 0x10 2)))
+
+(defn channels
+  "Returns the number of the channels in File `f`, usually 1 (mono) or 2 (stereo)."
+  [f]
+  (take-ubyte (read-bytes-be f 7 1)))
