@@ -119,3 +119,9 @@
   (case (version f)
     0x0300 (loop-info-3 f)
     [0 0 0]))
+
+(defn cutoff
+  "Returns the cutoff frequency for File `f`, as a Long.
+  MultimediaWiki says this is always 500Hz in practice."
+  [f]
+  (take-ushort (read-bytes-be f 0x10 2)))
