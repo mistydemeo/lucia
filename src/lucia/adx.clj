@@ -42,6 +42,12 @@
   ([f offset count]
     (read-bytes f offset count ByteOrder/BIG_ENDIAN)))
 
+(defn get-stream-offset
+  "Returns the offset from the beginning of the file at which the stream content begins.
+   The stream offset is located immediately after the (c)CRI signature."
+  [f]
+  (+ 4 (take-ushort (read-bytes-be f 2 2))))
+
 (defn header-valid?
   "Reads File `f`'s magic bytes to determine if it is a valid ADX file."
   [f]
@@ -52,7 +58,7 @@
   "Determines whether File `f` contains a valid ADX signature.
    The expected signature is the text \"(c)CRI\"."
   [f]
-  (let [offset (+ 4 (take-ushort (read-bytes-be f 2 2)))]
+  (let [offset (get-stream-offset f)]
     (and
       (= 0x2863 (take-ushort (read-bytes-be f (- offset 6) 2))) ; "(c"
       (= 0x29435249 (take-uint (read-bytes-be f (- offset 4) 4)))))) ; ")CRI"
