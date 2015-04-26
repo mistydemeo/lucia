@@ -140,3 +140,13 @@
   "Returns the number of samples in File `f`."
   [f]
   (take-uint (read-bytes-be f 0xc 4)))
+
+; TODO make this overload on input type, so a File can be passed in
+(defn calculate-coefficients
+  "Calculates the linear predictor coefficients given the cutoff frequency and the sample rate.
+  Returns a vector of [coefficient_1 coefficient_2], both values as signed integers."
+  [cutoff-filter sample-rate]
+  (let [sqrt2 (Math/sqrt 2) z (Math/cos (/ (* (* 2 Math/PI) cutoff-filter) sample-rate))
+        a (- sqrt2 z) b (- sqrt2 1) c (/ (- a (Math/sqrt (* (+ a b) (- a b)))) b)]
+        [(int (Math/floor (* c 8192)))
+         (int (Math/floor (* c (* c -4096))))]))
