@@ -1,4 +1,6 @@
 (ns lucia.adx
+  "Provides functions to identify, read metadata from, and decode CRI ADX ADPCM files.
+   The [MultimediaWiki](http://wiki.multimedia.cx/index.php?title=CRI_ADX_ADPCM) and [vgmstream](http://hcs64.com/vgmstream.html) were used as references."
   (:require [clojure.java.io :as io])
   (:import (java.nio ByteBuffer ByteOrder)))
 
