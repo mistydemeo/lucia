@@ -2,7 +2,14 @@
   (:require [clojure.java.io :as io])
   (:import (java.nio ByteBuffer ByteOrder)))
 
-; Based on a function from https://github.com/geoffsalmon/bytebuffer
+; Based on functions from https://github.com/geoffsalmon/bytebuffer
+(defn- take-ubyte
+  "Reads a single unsigned byte from ByteBuffer `bytebuf` and returns it as a Long."
+  ([bytebuf]
+  (take-ubyte bytebuf 0))
+  ([bytebuf index]
+  (bit-and 0xFF (long (.get bytebuf index)))))
+
 (defn- take-ushort
   "Reads an unsigned short from ByteBuffer `bytebuf` and returns it as a Long."
   ([bytebuf]
@@ -62,3 +69,13 @@
     (and
       (= 0x2863 (take-ushort (read-bytes-be f (- offset 6) 2))) ; "(c"
       (= 0x29435249 (take-uint (read-bytes-be f (- offset 4) 4)))))) ; ")CRI"
+
+(defn encoding-type
+  "Returns the encoding type of the ADX file.
+  Normal values are:
+  * 2  (unknown)
+  * 3  ADX
+  * 4  ADX (exponential scale)
+  * 17 AHX"
+  [f]
+  (take-ubyte (read-bytes-be f 4 1)))
