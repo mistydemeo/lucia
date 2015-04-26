@@ -130,3 +130,8 @@
   "Returns the number of the channels in File `f`, usually 1 (mono) or 2 (stereo)."
   [f]
   (take-ubyte (read-bytes-be f 7 1)))
+
+(defn sample-rate
+  "Returns the sample rate of File `f`."
+  [f]
+  (take-uint (read-bytes-be f 8 4)))
