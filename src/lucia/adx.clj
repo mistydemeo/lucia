@@ -98,3 +98,24 @@
   Note that lucia/adx currently only supports 0x0300 ADX files."
   [f]
   (take-ushort (read-bytes-be f 0x12 2)))
+
+(defn- loop-info-3
+  "Returns loop information for 0x0300 ADX files."
+  [f]
+  (let [offset (get-stream-offset f)]
+    (if (>= (- offset 6) 0x2c) ; check for enough room in the header for loop data
+      [
+        (take-uint (read-bytes-be f 0x18 4)) ; loop flag
+        (take-uint (read-bytes-be f 0x1c 4)) ; sample at which loop starts
+        (take-uint (read-bytes-be f 0x24 4)) ; sample at which loop ends
+      ]
+      ; default
+      [0 0 0])))
+
+(defn loop-info
+  "Returns loop information, as a vector of [loop_flag, loop_start, loop_end].
+  If the file contains no loop data, or is in an unsupported ADX format, returns [0 0 0]."
+  [f]
+  (case (version f)
+    0x0300 (loop-info-3 f)
+    [0 0 0]))
