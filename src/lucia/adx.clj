@@ -85,3 +85,16 @@
   Values other than 18 are rare (non-extant?) in practice."
   [f]
   (take-ubyte (read-bytes-be f 5 1)))
+
+(defn version
+  "Returns the version of the ADX file.
+  Values include:
+  * 0x0300 - ADX 3
+  * 0x0400 - ADX 4
+  * 0x0408 - Encrypted ADX 8
+  * 0x0409 - Encrpyted ADX 9
+  * 0x0500 - Simple, loopless ADX found as the audio stream in some Sofdec video; vgmstream cites Buggy Heat as an example
+
+  Note that lucia/adx currently only supports 0x0300 ADX files."
+  [f]
+  (take-ushort (read-bytes-be f 0x12 2)))
