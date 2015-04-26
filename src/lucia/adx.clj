@@ -79,3 +79,9 @@
   * 17 AHX"
   [f]
   (take-ubyte (read-bytes-be f 4 1)))
+
+(defn frame-size
+  "Returns the frame size of the ADX file.
+  Values other than 18 are rare (non-extant?) in practice."
+  [f]
+  (take-ubyte (read-bytes-be f 5 1)))
