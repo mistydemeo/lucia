@@ -47,3 +47,12 @@
   [f]
   (let [magic-bytes (read-bytes-be f 2)]
     (= 0x8000 (take-ushort magic-bytes))))
+
+(defn signature-valid?
+  "Determines whether File `f` contains a valid ADX signature.
+   The expected signature is the text \"(c)CRI\"."
+  [f]
+  (let [offset (+ 4 (take-ushort (read-bytes-be f 2 2)))]
+    (and
+      (= 0x2863 (take-ushort (read-bytes-be f (- offset 6) 2))) ; "(c"
+      (= 0x29435249 (take-uint (read-bytes-be f (- offset 4) 4)))))) ; ")CRI"
