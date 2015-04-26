@@ -10,6 +10,13 @@
   ([bytebuf index]
   (bit-and 0xFFFF (long (.getShort bytebuf index)))))
 
+(defn- take-uint
+  "Reads an unsigned short from ByteBuffer `bytebuf` and returns it as a Long."
+  ([bytebuf]
+  (take-uint bytebuf 0))
+  ([bytebuf index]
+  (bit-and 0xFFFFFFFF (long (.getInt bytebuf index)))))
+
 (defn- read-bytes
   "Reads `count` bytes from File `f` (beginning at `offset` or 0) and returns a ByteBuffer of the specified endianness."
   ([f count byte-order]
