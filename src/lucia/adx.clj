@@ -26,6 +26,22 @@
   ([bytebuf index]
   (bit-and 0xFFFFFFFF (long (.getInt bytebuf index)))))
 
+(defn get-low-nibble
+  "Given an eight-bit unsigned byte, returns the low nibble as a Long."
+  [byt]
+  (bit-and byt 0xF))
+
+(defn get-high-nibble
+  [byt]
+  (bit-and (bit-shift-right byt 4) 0xF))
+
+(defn clamp16
+  [i]
+  (cond
+    (> i 32767) 32767
+    (< i -32767) -32767
+    :else i))
+
 (defn- read-bytes
   "Reads `count` bytes from File `f` (beginning at `offset` or 0) and returns a ByteBuffer of the specified endianness."
   ([f count byte-order]
@@ -152,3 +168,61 @@
         a (- sqrt2 z) b (- sqrt2 1) c (/ (- a (Math/sqrt (* (+ a b) (- a b)))) b)]
         [(int (Math/floor (* c 8192)))
          (int (Math/floor (* c (* c -4096))))]))
+
+(defn- expand-sample
+  "Calculates a full sample from a 4-bit nibble."
+  [nibble scale coef1 coef2 hist1 hist2]
+  (let [sample-delta (* nibble scale)
+        predicted-sample (bit-shift-right (* coef1 (* hist1 (* coef2 (* hist2)))) 12)]
+        (clamp16 (+ predicted-sample sample-delta))))
+
+(defn read-samples-from-frame
+  "Reads audio samples from a frame.
+  Each frame (usually 18 bytes) consists of one unsigned short representing the scale of the nibbles in the frame, followed by 16 bytes representing 32 encoded samples.
+  Returns a Byte[] of signed Short samples."
+  [frame coef1 coef2]
+  ; note that the value of the scale is incremented by 1 over the value extracted from the frame
+  (let [scale (+ (take-ushort frame) 1)
+        output (ByteBuffer/allocate (* 8 (- (.capacity frame) 2)))]
+    ; hist1 and hist2 are the two previous samples in the array, used to compute the predicted sample
+    (loop [hist1 0 hist2 0 index 2] ; index begins at 2 because we already read bytes 0 and 1 to form the scale
+      (if (>= index (.capacity frame))
+        (.array output)
+        (let [byt (take-ubyte frame index)
+              low-nibble (get-low-nibble byt)
+              high-nibble (get-high-nibble byt)
+              low-sample (expand-sample low-nibble scale coef1 coef2 hist1 hist2)
+              high-sample (expand-sample high-nibble scale coef1 coef2 low-sample hist1)]
+          (.putInt output low-sample)
+          (.putInt output high-sample)
+          (recur
+            ; pass the two calculated samples as hist1 and hist2 to the next pair of samples
+            high-sample
+            low-sample
+            (inc index)))))))
+
+(defn decode-file
+  "Decodes the provided File, writing output to the provided OutputStream.
+   The output argument can be any subclass of OutputStream (e.g. BufferedOutputStream, ByteArrayOutputStream, etc).
+   Output will be created as raw PCM audio, using 16-bit signed samples.
+   The original channel count and frequency are maintained when decoding."
+   [f output]
+   (let [input (io/input-stream f) ; readable input stream
+         offset (get-stream-offset f) ; the position in the file at which actual encoded ADX content begins
+         frequency (sample-rate f)
+         cutoff (cutoff f)
+         samples (sample-count f)
+         frame-size (frame-size f)
+         samples-per-frame (* 2 (- frame-size 2))
+         coefficients (calculate-coefficients cutoff frequency)
+         frame (make-array Byte/TYPE frame-size)] ; Byte array to use to store each frame prior to decoding
+         (.skip input offset)
+         (loop [samples-remaining samples]
+          (if-not (<= samples-remaining 0)
+            (do
+              (println samples-remaining)
+              (.read input frame 0 frame-size)
+              (let [decoded (apply (partial read-samples-from-frame (ByteBuffer/wrap frame)) coefficients)]
+                (.write output decoded 0 (alength decoded))
+                (.flush output))
+              (recur (- samples-remaining samples-per-frame)))))))
