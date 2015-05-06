@@ -29,11 +29,11 @@
 (defn get-low-nibble
   "Given an eight-bit unsigned byte, returns the low nibble as a Long."
   [byt]
-  (bit-and byt 0xF))
+  (- (bit-and byt 7) (bit-and byt 8)))
 
 (defn get-high-nibble
   [byt]
-  (bit-and (bit-shift-right byt 4) 0xF))
+  (bit-shift-right (- (bit-and byt 0x70) (bit-and byt 0x80)) 4))
 
 (defn clamp16
   [i]
