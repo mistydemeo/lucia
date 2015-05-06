@@ -173,7 +173,7 @@
   "Calculates a full sample from a 4-bit nibble."
   [nibble scale coef1 coef2 hist1 hist2]
   (let [sample-delta (* nibble scale)
-        predicted-sample (bit-shift-right (* coef1 (* hist1 (* coef2 (* hist2)))) 12)]
+        predicted-sample (bit-shift-right (+ (* coef1 hist1) (* coef2 hist2)) 12)]
         (clamp16 (+ predicted-sample sample-delta))))
 
 (defn read-samples-from-frame
