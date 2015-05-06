@@ -179,15 +179,17 @@
 (defn read-samples-from-frame
   "Reads audio samples from a frame.
   Each frame (usually 18 bytes) consists of one unsigned short representing the scale of the nibbles in the frame, followed by 16 bytes representing 32 encoded samples.
-  Returns a Byte[] of signed Short samples."
-  [frame coef1 coef2]
+  Returns a Byte[] of signed Short samples along with the last two decoded samples."
+  [frame hist1 hist2 coef1 coef2]
   ; note that the value of the scale is incremented by 1 over the value extracted from the frame
   (let [scale (+ (take-ushort frame) 1)
         output (ByteBuffer/allocate (* 8 (- (.capacity frame) 2)))]
     ; hist1 and hist2 are the two previous samples in the array, used to compute the predicted sample
-    (loop [hist1 0 hist2 0 index 2] ; index begins at 2 because we already read bytes 0 and 1 to form the scale
+    (loop [hist1 hist1 hist2 hist2 index 2] ; index begins at 2 because we already read bytes 0 and 1 to form the scale
       (if (>= index (.capacity frame))
-        (.array output)
+        ; Return the output as well as hist1 and hist2 values that can be used to calculate
+        ; the next sample
+        [(.array output) hist1 hist2]
         (let [byt (.get frame index)
               low-nibble (get-low-nibble byt)
               high-nibble (get-high-nibble byt)
@@ -217,12 +219,12 @@
          coefficients (calculate-coefficients cutoff frequency)
          frame (make-array Byte/TYPE frame-size)] ; Byte array to use to store each frame prior to decoding
          (.skip input offset)
-         (loop [samples-remaining samples]
+         (loop [samples-remaining samples hist1 0 hist2 0]
           (if-not (<= samples-remaining 0)
             (do
               (println samples-remaining)
               (.read input frame 0 frame-size)
-              (let [decoded (apply (partial read-samples-from-frame (ByteBuffer/wrap frame)) coefficients)]
+              (let [[decoded hist1 hist2] (apply (partial read-samples-from-frame (ByteBuffer/wrap frame) hist1 hist2) coefficients)]
                 (.write output decoded 0 (alength decoded))
                 (.flush output))
-              (recur (- samples-remaining samples-per-frame)))))))
+              (recur (- samples-remaining samples-per-frame) hist1 hist2))))))
