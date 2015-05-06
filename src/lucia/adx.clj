@@ -188,7 +188,7 @@
     (loop [hist1 0 hist2 0 index 2] ; index begins at 2 because we already read bytes 0 and 1 to form the scale
       (if (>= index (.capacity frame))
         (.array output)
-        (let [byt (take-ubyte frame index)
+        (let [byt (.get frame index)
               low-nibble (get-low-nibble byt)
               high-nibble (get-high-nibble byt)
               low-sample (expand-sample low-nibble scale coef1 coef2 hist1 hist2)
