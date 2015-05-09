@@ -222,7 +222,6 @@
          (loop [samples-remaining samples hist1 0 hist2 0]
           (if-not (<= samples-remaining 0)
             (do
-              (println samples-remaining)
               (.read input frame 0 frame-size)
               (let [[decoded hist1 hist2] (apply (partial read-samples-from-frame (ByteBuffer/wrap frame) hist1 hist2) coefficients)]
                 (.write output decoded 0 (alength decoded))
