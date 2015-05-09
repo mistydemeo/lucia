@@ -226,5 +226,5 @@
               (.read input frame 0 frame-size)
               (let [[decoded hist1 hist2] (apply (partial read-samples-from-frame (ByteBuffer/wrap frame) hist1 hist2) coefficients)]
                 (.write output decoded 0 (alength decoded))
-                (.flush output))
-              (recur (- samples-remaining samples-per-frame) hist1 hist2))))))
+                (.flush output)
+                (recur (- samples-remaining samples-per-frame) hist1 hist2)))))))
