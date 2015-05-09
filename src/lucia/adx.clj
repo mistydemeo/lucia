@@ -191,16 +191,16 @@
         ; the next sample
         [(.array output) hist1 hist2]
         (let [byt (.get frame index)
-              low-nibble (get-low-nibble byt)
               high-nibble (get-high-nibble byt)
-              low-sample (expand-sample low-nibble scale coef1 coef2 hist1 hist2)
-              high-sample (expand-sample high-nibble scale coef1 coef2 low-sample hist1)]
-          (.putInt output low-sample)
+              low-nibble (get-low-nibble byt)
+              high-sample (expand-sample high-nibble scale coef1 coef2 hist1 hist2)
+              low-sample (expand-sample low-nibble scale coef1 coef2 high-sample hist1)]
           (.putInt output high-sample)
+          (.putInt output low-sample)
           (recur
             ; pass the two calculated samples as hist1 and hist2 to the next pair of samples
-            high-sample
             low-sample
+            high-sample
             (inc index)))))))
 
 (defn decode-file
