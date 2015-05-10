@@ -88,7 +88,7 @@
       (= 0x2863 (take-ushort (read-bytes-be f (- offset 6) 2))) ; "(c"
       (= 0x29435249 (take-uint (read-bytes-be f (- offset 4) 4)))))) ; ")CRI"
 
-(defn encoding-type
+(defn get-encoding-type
   "Returns the encoding type of the ADX file.
   Normal values are:
   * 2  (unknown)
@@ -98,13 +98,13 @@
   [f]
   (take-ubyte (read-bytes-be f 4 1)))
 
-(defn frame-size
+(defn get-frame-size
   "Returns the frame size of the ADX file.
   Values other than 18 are rare (non-extant?) in practice."
   [f]
   (take-ubyte (read-bytes-be f 5 1)))
 
-(defn version
+(defn get-version
   "Returns the version of the ADX file.
   Values include:
   * 0x0300 - ADX 3
@@ -117,7 +117,7 @@
   [f]
   (take-ushort (read-bytes-be f 0x12 2)))
 
-(defn- loop-info-3
+(defn- get-loop-info-3
   "Returns loop information for 0x0300 ADX files."
   [f]
   (let [offset (get-stream-offset f)]
@@ -130,31 +130,31 @@
       ; default
       [0 0 0])))
 
-(defn loop-info
+(defn get-loop-info
   "Returns loop information, as a vector of [loop_flag, loop_start, loop_end].
   If the file contains no loop data, or is in an unsupported ADX format, returns [0 0 0]."
   [f]
-  (case (version f)
-    0x0300 (loop-info-3 f)
+  (case (get-version f)
+    0x0300 (get-loop-info-3 f)
     [0 0 0]))
 
-(defn cutoff
+(defn get-cutoff
   "Returns the cutoff frequency for File `f`, as a Long.
   MultimediaWiki says this is always 500Hz in practice."
   [f]
   (take-ushort (read-bytes-be f 0x10 2)))
 
-(defn channels
+(defn get-channel-count
   "Returns the number of the channels in File `f`, usually 1 (mono) or 2 (stereo)."
   [f]
   (take-ubyte (read-bytes-be f 7 1)))
 
-(defn sample-rate
+(defn get-sample-rate
   "Returns the sample rate of File `f`."
   [f]
   (take-uint (read-bytes-be f 8 4)))
 
-(defn sample-count
+(defn get-sample-count
   "Returns the number of samples in File `f`."
   [f]
   (take-uint (read-bytes-be f 0xc 4)))
@@ -241,11 +241,11 @@
    [f output]
    (let [input (io/input-stream f) ; readable input stream
          offset (get-stream-offset f) ; the position in the file at which actual encoded ADX content begins
-         channels (channels f) ; number of channels in the file, usually just 1 for mono or 2 for stereo
-         frequency (sample-rate f)
-         cutoff (cutoff f)
-         samples (sample-count f)
-         frame-size (frame-size f)
+         channels (get-channel-count f) ; number of channels in the file, usually just 1 for mono or 2 for stereo
+         frequency (get-sample-rate f)
+         cutoff (get-cutoff f)
+         samples (get-sample-count f)
+         frame-size (get-frame-size f)
          samples-per-frame (* 2 (- frame-size 2))
          coefficients (calculate-coefficients cutoff frequency)
          frame (make-array Byte/TYPE frame-size)] ; Byte array to use to store each frame prior to decoding
