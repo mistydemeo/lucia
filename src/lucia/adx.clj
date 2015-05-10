@@ -223,13 +223,13 @@
   [stream output frame-buffer frame-size history-samples coefficients]
   (let [
       ; output-buffer is the size of the number of channels times the size of each decoded frame
-      ; For example, for a mono file, output-buffer would be 32 4-byte samples (128 bytes),
+      ; For example, for a mono file, output-buffer would be 32 2-byte samples (64 bytes),
       ; for a stereo file it would be 64 samples, etc. 
-      output-buffer (ByteBuffer/allocate (* (count history-samples) (* 8 (- (alength frame-buffer) 2))))
+      output-buffer (ByteBuffer/allocate (* (count history-samples) (* 4 (- (alength frame-buffer) 2))))
       [decoded-samples new-history-samples] (read-interleaved-samples stream frame-buffer frame-size history-samples coefficients)
     ]
     (doseq [sample (apply interleave decoded-samples)]
-      (.putInt output-buffer sample))
+      (.putShort output-buffer sample))
     (.write output (.array output-buffer) 0 (.capacity output-buffer))
     new-history-samples))
 
