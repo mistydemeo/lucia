@@ -113,7 +113,7 @@
   * 0x0409 - Encrpyted ADX 9
   * 0x0500 - Simple, loopless ADX found as the audio stream in some Sofdec video; vgmstream cites Buggy Heat as an example
 
-  Note that lucia/adx currently only supports 0x0300 ADX files."
+  Note that lucia.adx currently only supports 0x0300 ADX files."
   [f]
   (take-ushort (read-bytes-be f 0x12 2)))
 
