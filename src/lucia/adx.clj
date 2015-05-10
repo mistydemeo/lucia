@@ -179,29 +179,59 @@
 (defn read-samples-from-frame
   "Reads audio samples from a frame.
   Each frame (usually 18 bytes) consists of one unsigned short representing the scale of the nibbles in the frame, followed by 16 bytes representing 32 encoded samples.
-  Returns a Byte[] of signed Short samples along with the last two decoded samples."
+  Returns a vector of signed Short samples along with the last two decoded samples."
   [frame hist1 hist2 coef1 coef2]
   ; note that the value of the scale is incremented by 1 over the value extracted from the frame
-  (let [scale (+ (take-ushort frame) 1)
-        output (ByteBuffer/allocate (* 8 (- (.capacity frame) 2)))]
+  (let [scale (+ (take-ushort frame) 1)]
     ; hist1 and hist2 are the two previous samples in the array, used to compute the predicted sample
-    (loop [hist1 hist1 hist2 hist2 index 2] ; index begins at 2 because we already read bytes 0 and 1 to form the scale
+    (loop [hist1 hist1 hist2 hist2 index 2 output []] ; index begins at 2 because we already read bytes 0 and 1 to form the scale
       (if (>= index (.capacity frame))
         ; Return the output as well as hist1 and hist2 values that can be used to calculate
         ; the next sample
-        [(.array output) hist1 hist2]
+        [output [hist1 hist2]]
         (let [byt (.get frame index)
               high-nibble (get-high-nibble byt)
               low-nibble (get-low-nibble byt)
               high-sample (expand-sample high-nibble scale coef1 coef2 hist1 hist2)
               low-sample (expand-sample low-nibble scale coef1 coef2 high-sample hist1)]
-          (.putInt output high-sample)
-          (.putInt output low-sample)
           (recur
             ; pass the two calculated samples as hist1 and hist2 to the next pair of samples
             low-sample
             high-sample
-            (inc index)))))))
+            (inc index)
+            (into output [high-sample low-sample])))))))
+
+(defn- process-frame
+  "Reads a new frame from the provided InputStream `stream` into the provided Byte[] `frame-buffer` and passes it to read-samples-from-frame, returning that function's return value."
+  [stream frame-buffer frame-size history-pair coefficients]
+  (.read stream frame-buffer 0 frame-size)
+  (apply (partial read-samples-from-frame (ByteBuffer/wrap frame-buffer)) (concat history-pair coefficients)))
+
+(defn- read-interleaved-samples
+  [stream frame-buffer frame-size history-samples coefficients]
+  (let [
+      stream-array (repeat (count history-samples) stream)
+      frame-buffer-array (repeat (count history-samples) frame-buffer)
+      frame-size-array (repeat (count history-samples) frame-size)
+      coefficient-array (repeat (count history-samples) coefficients)
+    ]
+    (let [results (map #(apply process-frame %) (map vector stream-array frame-buffer-array frame-size-array history-samples coefficient-array))]
+      ; return an array of all sample arrays, and an array of all history sample arrays
+      [(map first results) (map last results)])))
+
+(defn- write-interleaved-samples
+  [stream output frame-buffer frame-size history-samples coefficients]
+  (let [
+      ; output-buffer is the size of the number of channels times the size of each decoded frame
+      ; For example, for a mono file, output-buffer would be 32 4-byte samples (128 bytes),
+      ; for a stereo file it would be 64 samples, etc. 
+      output-buffer (ByteBuffer/allocate (* (count history-samples) (* 8 (- (alength frame-buffer) 2))))
+      [decoded-samples new-history-samples] (read-interleaved-samples stream frame-buffer frame-size history-samples coefficients)
+    ]
+    (doseq [sample (apply interleave decoded-samples)]
+      (.putInt output-buffer sample))
+    (.write output (.array output-buffer) 0 (.capacity output-buffer))
+    new-history-samples))
 
 (defn decode-file
   "Decodes the provided File, writing output to the provided OutputStream.
@@ -211,6 +241,7 @@
    [f output]
    (let [input (io/input-stream f) ; readable input stream
          offset (get-stream-offset f) ; the position in the file at which actual encoded ADX content begins
+         channels (channels f) ; number of channels in the file, usually just 1 for mono or 2 for stereo
          frequency (sample-rate f)
          cutoff (cutoff f)
          samples (sample-count f)
@@ -219,11 +250,11 @@
          coefficients (calculate-coefficients cutoff frequency)
          frame (make-array Byte/TYPE frame-size)] ; Byte array to use to store each frame prior to decoding
          (.skip input offset)
-         (loop [samples-remaining samples hist1 0 hist2 0]
+         (loop [
+            samples-remaining samples
+            history-samples (repeat channels [0 0]) ; Sets of history samples for calculating predicted samples, one pair per channel
+          ]
           (if-not (<= samples-remaining 0)
             (do
-              (.read input frame 0 frame-size)
-              (let [[decoded hist1 hist2] (apply (partial read-samples-from-frame (ByteBuffer/wrap frame) hist1 hist2) coefficients)]
-                (.write output decoded 0 (alength decoded))
-                (.flush output)
-                (recur (- samples-remaining samples-per-frame) hist1 hist2)))))))
+              (let [history-samples (write-interleaved-samples input output frame frame-size history-samples coefficients)]
+                (recur (- samples-remaining (* channels samples-per-frame)) history-samples)))))))
