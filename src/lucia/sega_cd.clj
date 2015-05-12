@@ -50,17 +50,26 @@
   [header]
   (= (:channel-count header) 2))
 
-(defn- filter-frame
-  "Given a Byte[] or other sequence containing a raw frame read from a PCM file, returns a version with only the used (even) bytes as a seq.
-   Eternal Blue's frames are 2048 bytes long, but contain only 1024 bytes of data (as 8-bit signed integers); every other byte is empty."
-  [frame]
-  (into-array Byte/TYPE (keep-indexed #(if (odd? %1) %2) frame)))
-
 (defn- interleave-stereo-frames
   "Given two Byte[] arrays, returns a new Byte[] array with the original arrays' values interleaved.
    This is useful when processing stereo data from Sega CD PCM files, as standard PCM interleaves every sample while Eternal Blue PCM files interleave frames."
   [left right]
   (into-array Byte/TYPE (interleave left right)))
+
+(defn- amplify-byte
+  [byt]
+  (let [byt (bit-and byt 0xFF)]
+    (if-not (= 0 (bit-and byt 0x80))
+      (* 0x100 (- 0 (bit-and byt 0x7F)))
+      (* 0x100 byt))))
+
+(defn- amplify-frame
+  [frame]
+  (let [buffer (ByteBuffer/allocate (* 2 (alength frame)))
+        amplified-frame (map amplify-byte frame)]
+    (doseq [sample amplified-frame]
+      (.putShort buffer sample))
+    (.array buffer)))
 
 (defn- read-and-process-frame
   [stream header]
@@ -68,10 +77,9 @@
     (let [left (read-frame stream)
           right (read-frame stream)]
       (if-not (some nil? [left right]) ; EOF
-        (apply interleave-stereo-frames (map filter-frame [left right]))))
-    (let [frame (read-frame stream)]
-      (if-not (nil? frame) ; EOF
-        (filter-frame frame)))))
+        (apply interleave-stereo-frames [left right])))
+    ; single mono frame    
+    (read-frame stream)))
 
 (defn decode-file
   [f output]
@@ -80,6 +88,6 @@
     (loop []
       (let [decoded-frame (read-and-process-frame input header-data)]
         (if-not (nil? decoded-frame)
-          (do 
-            (.write output decoded-frame 0 (alength decoded-frame))
+          (let [amplified-frame (amplify-frame decoded-frame)]
+            (.write output amplified-frame 0 (alength amplified-frame))
             (recur)))))))
