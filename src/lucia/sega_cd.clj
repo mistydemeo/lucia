@@ -3,6 +3,11 @@
   (:require [clojure.java.io :as io])
   (:import (java.nio ByteBuffer)))
 
+; Value provided by kode54; "determined from the PCM chip's base clock divided by the rate value the game uses"
+; This is double the native value, 16282, due to the conversion from the original 8-bit to 16-bit samples
+(def frequency
+  32564)
+
 (defn read-frame
   "Given an InputStream, reads a 2048-byte sector and returns it as a Byte[].
    If the end of the file has been reached, returns nil instead."
