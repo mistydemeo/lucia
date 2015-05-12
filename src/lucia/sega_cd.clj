@@ -27,7 +27,7 @@
 (defn- calculate-loop-start
   [header]
   "Extracts the loop start position from the header."
-  (bit-shift-left (bit-or 
+  (bit-shift-left (bit-or
     (bit-shift-left (nth header 2) 24)
     (bit-shift-left (nth header 3) 16)
     (bit-shift-left (nth header 4) 8)
