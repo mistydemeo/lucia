@@ -61,18 +61,18 @@
   [left right]
   (into-array Byte/TYPE (interleave left right)))
 
-(defn- amplify-byte
+(defn- convert-byte-s8-to-s16
   [byt]
   (let [byt (bit-and byt 0xFF)]
     (if-not (= 0 (bit-and byt 0x80))
       (* 0x100 (- 0 (bit-and byt 0x7F)))
       (* 0x100 byt))))
 
-(defn- amplify-frame
+(defn- convert-frame-s8-to-s16
   [frame]
   (let [buffer (ByteBuffer/allocate (* 2 (alength frame)))
-        amplified-frame (map amplify-byte frame)]
-    (doseq [sample amplified-frame]
+        s16-frame (map convert-byte-s8-to-s16 frame)]
+    (doseq [sample s16-frame]
       (.putShort buffer sample))
     (.array buffer)))
 
@@ -93,6 +93,6 @@
     (loop []
       (let [decoded-frame (read-and-process-frame input header-data)]
         (if-not (nil? decoded-frame)
-          (let [amplified-frame (amplify-frame decoded-frame)]
-            (.write output amplified-frame 0 (alength amplified-frame))
+          (let [s16-frame (convert-frame-s8-to-s16 decoded-frame)]
+            (.write output s16-frame 0 (alength s16-frame))
             (recur)))))))
