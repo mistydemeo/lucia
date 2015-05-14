@@ -28,19 +28,19 @@
   [header]
   "Extracts the loop start position from the header."
   (bit-shift-left (bit-or
-    (bit-shift-left (nth header 2) 24)
-    (bit-shift-left (nth header 3) 16)
-    (bit-shift-left (nth header 4) 8)
-    (nth header 5)) 11))
+    (bit-shift-left (bit-and 0xFF (nth header 2)) 24)
+    (bit-shift-left (bit-and 0xFF (nth header 3)) 16)
+    (bit-shift-left (bit-and 0xFF (nth header 4)) 8)
+    (bit-and 0xFF (nth header 5))) 11))
 
 (defn- calculate-loop-end
   "Extracts the loop end position from the header."
   [header]
   (+ 1 (bit-or
-    (bit-shift-left (nth header 6) 24)
-    (bit-shift-left (nth header 7) 16)
-    (bit-shift-left (nth header 8) 8)
-    (nth header 9))))
+    (bit-shift-left (bit-and 0xFF (nth header 6)) 24)
+    (bit-shift-left (bit-and 0xFF (nth header 7)) 16)
+    (bit-shift-left (bit-and 0xFF (nth header 8)) 8)
+    (bit-and 0xFF (nth header 9)))))
 
 (defn parse-header
   "Given the header of a PCM file, as a Byte[], return a map containing all of the associated metadata."
