@@ -39,11 +39,15 @@
   "Extracts the loop end position from the header."
   [header]
   (let [header (ByteBuffer/wrap header)]
-    (+ 1 (bit-or
+    ; The native value is multiplied by two, because the native value is
+    ; in *samples*, whereas we're looking for values in *bytes*.
+    ; Note that this is different from loop start, which is in fact
+    ; natively stored as bytes. 
+    (* 2 (+ 1 (bit-or
       (bit-shift-left (byte-tools/take-ubyte header 6) 24)
       (bit-shift-left (byte-tools/take-ubyte header 7) 16)
       (bit-shift-left (byte-tools/take-ubyte header 8) 8)
-      (byte-tools/take-ubyte header 9)))))
+      (byte-tools/take-ubyte header 9))))))
 
 (defn parse-header
   "Given the header of a PCM file, as a Byte[], return a map containing all of the associated metadata."
