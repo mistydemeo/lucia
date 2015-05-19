@@ -3,7 +3,8 @@
    The [MultimediaWiki](http://wiki.multimedia.cx/index.php?title=CRI_ADX_ADPCM), [vgmstream](http://hcs64.com/vgmstream.html) and [FFmpeg](http://ffmpeg.org/) were used as references."
   (:require [lucia.byte-tools :as byte-tools])
   (:require [clojure.java.io :as io])
-  (:import (java.nio ByteBuffer)))
+  (:import (java.nio ByteBuffer))
+  (:import (java.io RandomAccessFile)))
 
 (defn get-stream-offset
   "Returns the offset from the beginning of the file at which the stream content begins.
@@ -177,7 +178,7 @@
    Output will be created as raw PCM audio, using 16-bit signed samples.
    The original channel count and frequency are maintained when decoding."
    [f output]
-   (let [input (io/input-stream f) ; readable input stream
+   (let [input (new RandomAccessFile f "r") ; readable input stream
          offset (get-stream-offset f) ; the position in the file at which actual encoded ADX content begins
          channels (get-channel-count f) ; number of channels in the file, usually just 1 for mono or 2 for stereo
          frequency (get-sample-rate f)
@@ -187,7 +188,7 @@
          samples-per-frame (* 2 (- frame-size 2))
          coefficients (calculate-coefficients cutoff frequency)
          frame (make-array Byte/TYPE frame-size)] ; Byte array to use to store each frame prior to decoding
-         (.skip input offset)
+         (.seek input offset)
          (loop [
             samples-remaining samples
             history-samples (repeat channels [0 0]) ; Sets of history samples for calculating predicted samples, one pair per channel

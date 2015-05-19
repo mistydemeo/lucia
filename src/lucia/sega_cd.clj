@@ -1,7 +1,8 @@
 (ns lucia.sega-cd
   (:require [lucia.byte-tools :as byte-tools])
   (:require [clojure.java.io :as io])
-  (:import (java.nio ByteBuffer)))
+  (:import (java.nio ByteBuffer))
+  (:import (java.io RandomAccessFile)))
 
 ; Value provided by kode54; "determined from the PCM chip's base clock divided by the rate value the game uses"
 ; This is double the native value, 16282, because the empty 0-byte samples are not filtered out
@@ -90,7 +91,7 @@
 
 (defn decode-file
   [f output]
-  (let [input (io/input-stream f)
+  (let [input (new RandomAccessFile f "r")
         header-data (parse-header (read-frame input))]
     (loop []
       (let [decoded-frame (read-and-process-frame input header-data)]
