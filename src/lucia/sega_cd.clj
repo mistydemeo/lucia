@@ -94,7 +94,9 @@
     (read-frame stream)))
 
 (defn decode-file
-  [f output loops] ; TODO provide a default value for loops
+  ([f output]
+    (decode-file f output 2))
+  ([f output loops]
   (let [input (new RandomAccessFile f "r")
         header-data (parse-header (read-frame input))
         ; 2048 because the header is a full frame
@@ -120,4 +122,4 @@
                 (.write output s16-frame 0 (* 2 bytes-to-play)))
               ; if all loops have been played, just continue playing to end of file
               (.write output s16-frame 0 (alength s16-frame)))
-            (recur new-loop-count new-bytes-to-play)))))))
+            (recur new-loop-count new-bytes-to-play))))))))
