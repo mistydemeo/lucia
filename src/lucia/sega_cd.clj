@@ -98,11 +98,9 @@
     (decode-file f output 2))
   ([f output loops]
   (let [input (new RandomAccessFile f "r")
-        header-data (parse-header (read-frame input))
-        ; 2048 because the header is a full frame
-        loop-playback-size (- (:loop-end header-data) 2048)]
+        header-data (parse-header (read-frame input))]
     (loop [loop-count 1
-           bytes-to-play loop-playback-size]
+           bytes-to-play (:loop-end header-data)]
       (let [decoded-frame (read-and-process-frame input header-data)]
         (if-not (nil? decoded-frame)
           (let [s16-frame (convert-frame-s8-to-s16 decoded-frame)
@@ -111,7 +109,8 @@
                 looping-done? (= loops loop-count)
                 new-loop-count (if loop-done? (inc loop-count) loop-count)
                 new-bytes-to-play (if loop-done?
-                  loop-playback-size
+                  ; bytes-to-play resets back to the duration of the loop if loop is over
+                  (:loop-end header-data)
                   (- bytes-to-play current-frame-size))]
             (if (and (not looping-done?) loop-done?)
               (do
