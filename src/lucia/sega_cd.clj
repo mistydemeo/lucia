@@ -94,12 +94,30 @@
     (read-frame stream)))
 
 (defn decode-file
-  [f output]
+  [f output loops] ; TODO provide a default value for loops
   (let [input (new RandomAccessFile f "r")
-        header-data (parse-header (read-frame input))]
-    (loop []
+        header-data (parse-header (read-frame input))
+        ; 2048 because the header is a full frame
+        loop-playback-size (- (:loop-end header-data) 2048)]
+    (loop [loop-count 1
+           bytes-to-play loop-playback-size]
       (let [decoded-frame (read-and-process-frame input header-data)]
         (if-not (nil? decoded-frame)
-          (let [s16-frame (convert-frame-s8-to-s16 decoded-frame)]
-            (.write output s16-frame 0 (alength s16-frame))
-            (recur)))))))
+          (let [s16-frame (convert-frame-s8-to-s16 decoded-frame)
+                current-frame-size (alength decoded-frame)
+                loop-done? (< bytes-to-play current-frame-size)
+                looping-done? (= loops loop-count)
+                new-loop-count (if loop-done? (inc loop-count) loop-count)
+                new-bytes-to-play (if loop-done?
+                  loop-playback-size
+                  (- bytes-to-play current-frame-size))]
+            (if (and (not looping-done?) loop-done?)
+              (do
+                (.seek input (:loop-start header-data))
+                ; write double bytes-to-play because bytes-to-play
+                ; represents the size of the original 8-bit samples;
+                ; the actual block being written is double this size
+                (.write output s16-frame 0 (* 2 bytes-to-play)))
+              ; if all loops have been played, just continue playing to end of file
+              (.write output s16-frame 0 (alength s16-frame)))
+            (recur new-loop-count new-bytes-to-play)))))))
