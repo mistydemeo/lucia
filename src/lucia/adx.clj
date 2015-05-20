@@ -104,6 +104,8 @@
   (case (get-version f)
     0x0300 (get-loop-info-3 f)
     0x0400 (get-loop-info-4 f)
+    ; Note that encrypted files aren't actually supported yet
+    ; Don't try if you value your ears!
     0x0408 (get-loop-info-4 f)
     {
       :has-loop false
