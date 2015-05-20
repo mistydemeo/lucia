@@ -61,21 +61,30 @@
   [f]
   (let [offset (get-stream-offset f)]
     (if (>= (- offset 6) 0x2c) ; check for enough room in the header for loop data
-      [
-        (byte-tools/take-uint (byte-tools/read-bytes-be f 0x18 4)) ; loop flag
-        (byte-tools/take-uint (byte-tools/read-bytes-be f 0x1c 4)) ; sample at which loop starts
-        (byte-tools/take-uint (byte-tools/read-bytes-be f 0x24 4)) ; sample at which loop ends
-      ]
+      {
+        :loop-flag (byte-tools/take-uint (byte-tools/read-bytes-be f 0x18 4))
+        :loop-start (byte-tools/take-uint (byte-tools/read-bytes-be f 0x1c 4))
+        :loop-end (byte-tools/take-uint (byte-tools/read-bytes-be f 0x24 4))
+
+      }
       ; default
-      [0 0 0])))
+      {
+        :loop-flag 0
+        :loop-start 0
+        :loop-end 0  
+      })))
 
 (defn get-loop-info
-  "Returns loop information, as a vector of [loop_flag, loop_start, loop_end].
-  If the file contains no loop data, or is in an unsupported ADX format, returns [0 0 0]."
+  "Returns loop information, as a map with the keys loop-flag, loop-start, and loop-end.
+  If the file contains no loop data, or is in an unsupported ADX format, returns all values as 0."
   [f]
   (case (get-version f)
     0x0300 (get-loop-info-3 f)
-    [0 0 0]))
+    {
+      :loop-flag 0
+      :loop-start 0
+      :loop-end 0  
+    }))
 
 (defn get-cutoff
   "Returns the cutoff frequency for File `f`, as a Long.
