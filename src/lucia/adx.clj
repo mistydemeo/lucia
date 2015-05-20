@@ -104,6 +104,7 @@
   (case (get-version f)
     0x0300 (get-loop-info-3 f)
     0x0400 (get-loop-info-4 f)
+    0x0408 (get-loop-info-4 f)
     {
       :has-loop false
       :loop-start 0
