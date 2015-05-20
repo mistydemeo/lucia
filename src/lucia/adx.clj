@@ -76,7 +76,12 @@
 
 (defn get-loop-info
   "Returns loop information, as a map with the keys loop-flag, loop-start, and loop-end.
-  If the file contains no loop data, or is in an unsupported ADX format, returns all values as 0."
+  If the file contains no loop data, or is in an unsupported ADX format, returns all values as 0.
+
+  Values:
+  * has-loop: boolean
+  * loop-start: position of the beginning of the loop, in bytes
+  * loop-end: position of the end of the loop, in bytes"
   [f]
   (case (get-version f)
     0x0300 (get-loop-info-3 f)
