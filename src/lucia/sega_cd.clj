@@ -9,12 +9,16 @@
 (def frequency
   32564)
 
+; Size of a frame, and also (not coincidentally) the size of a mode 1 sector on a CD-ROM.
+(def sector-size
+  2048)
+
 (defn read-frame
   "Given an InputStream, reads a 2048-byte sector and returns it as a Byte[].
    If the end of the file has been reached, returns nil instead."
   [stream]
-  (let [frame (make-array Byte/TYPE 2048)]
-    (if-not (= -1 (.read stream frame 0 2048))
+  (let [frame (make-array Byte/TYPE sector-size)]
+    (if-not (= -1 (.read stream frame 0 sector-size))
       frame)))
 
 (defn- interpret-channel-count
@@ -58,11 +62,11 @@
     {:channel-count channel-count
      ; offsets on all of these values are from the start of *content*, not
      ; the start of the *file*; add 2048 to account for the header 
-     :loop-start (+ 2048 loop-start)
+     :loop-start (+ sector-size loop-start)
      ; loop-end is treated internally as samples, with left-right pairs being
      ; considered to be a single sample;
      ; for stereo audio, multiply this by two to get a true byte count
-     :loop-end (+ 2048 (if (= 2 channel-count) (* loop-end 2) loop-end))}))
+     :loop-end (+ sector-size (if (= 2 channel-count) (* loop-end 2) loop-end))}))
 
 (defn- stereo?
   [header]
