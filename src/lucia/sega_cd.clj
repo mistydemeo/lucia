@@ -52,11 +52,17 @@
 (defn parse-header
   "Given the header of a PCM file, as a Byte[], return a map containing all of the associated metadata."
   [header]
-  {
-    :channel-count (interpret-channel-count (nth header 1))
-    :loop-start (calculate-loop-start header)
-    :loop-end (calculate-loop-end header)
-    })
+  (let [channel-count (interpret-channel-count (nth header 1))
+        loop-start (calculate-loop-start header)
+        loop-end (calculate-loop-end header)]
+    {:channel-count channel-count
+     ; offsets on all of these values are from the start of *content*, not
+     ; the start of the *file*; add 2048 to account for the header 
+     :loop-start (+ 2048 loop-start)
+     ; loop-end is treated internally as samples, with left-right pairs being
+     ; considered to be a single sample;
+     ; for stereo audio, multiply this by two to get a true byte count
+     :loop-end (+ 2048 (if (= 2 channel-count) (* loop-end 2) loop-end))}))
 
 (defn- stereo?
   [header]
