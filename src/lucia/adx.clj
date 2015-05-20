@@ -191,8 +191,11 @@
    The output argument can be any subclass of OutputStream (e.g. BufferedOutputStream, ByteArrayOutputStream, etc).
    Output will be created as raw PCM audio, using 16-bit signed samples.
    The original channel count and frequency are maintained when decoding."
-   [f output]
+   ([f output]
+    (decode-file f output 2))
+   ([f output loops]
    (let [input (new RandomAccessFile f "r") ; readable input stream
+         loop-data (get-loop-info f)
          offset (get-stream-offset f) ; the position in the file at which actual encoded ADX content begins
          channels (get-channel-count f) ; number of channels in the file, usually just 1 for mono or 2 for stereo
          frequency (get-sample-rate f)
@@ -204,10 +207,23 @@
          frame (make-array Byte/TYPE frame-size)] ; Byte array to use to store each frame prior to decoding
          (.seek input offset)
          (loop [
-            samples-remaining samples
             history-samples (repeat channels [0 0]) ; Sets of history samples for calculating predicted samples, one pair per channel
+            loop-count 1
+            bytes-played offset
           ]
-          (if-not (<= samples-remaining 0)
+          (if-not (>= bytes-played (.length input))
             (do
-              (let [history-samples (write-interleaved-samples input output frame frame-size history-samples coefficients)]
-                (recur (- samples-remaining (* channels samples-per-frame)) history-samples)))))))
+              (let [history-samples (write-interleaved-samples input output frame frame-size history-samples coefficients)
+                    ; This is dependent on loops always occurring on frame boundaries
+                    ; Please feel free to kick me later when this fragile assumption breaks!
+                    loop-done? (= bytes-played (:loop-end loop-data))
+                    new-loop-count (if loop-done? (inc loop-count) loop-count)
+                    looping-done? (= loops loop-count)
+                    new-bytes-played (if (and loop-done? (not looping-done?))
+                      (:loop-start loop-data) (+ bytes-played (* channels frame-size)))]
+                (if loop-done?
+                  (.seek input (:loop-start loop-data)))
+                (recur
+                  history-samples
+                  new-loop-count
+                  new-bytes-played))))))))
