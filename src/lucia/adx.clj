@@ -71,7 +71,7 @@
       {
         :has-loop false
         :loop-start 0
-        :loop-end 0  
+        :loop-end 0
       })))
 
 (defn- get-loop-info-4
@@ -107,7 +107,7 @@
     {
       :has-loop false
       :loop-start 0
-      :loop-end 0  
+      :loop-end 0
     }))
 
 (defn get-cutoff
