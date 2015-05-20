@@ -74,6 +74,24 @@
         :loop-end 0  
       })))
 
+(defn- get-loop-info-4
+  "Returns loop information for 0x0400 ADX files."
+  [f]
+  (let [offset (get-stream-offset f)]
+    (if (>= (- offset 6) 0x2c) ; check for enough room in the header for loop data
+      {
+        :has-loop (= 1 (byte-tools/take-uint (byte-tools/read-bytes-be f 0x24 4)))
+        :loop-start (byte-tools/take-uint (byte-tools/read-bytes-be f 0x2C 4))
+        :loop-end (byte-tools/take-uint (byte-tools/read-bytes-be f 0x34 4))
+
+      }
+      ; default
+      {
+        :has-loop false
+        :loop-start 0
+        :loop-end 0
+      })))
+
 (defn get-loop-info
   "Returns loop information, as a map with the keys loop-flag, loop-start, and loop-end.
   If the file contains no loop data, or is in an unsupported ADX format, returns all values as 0.
@@ -85,6 +103,7 @@
   [f]
   (case (get-version f)
     0x0300 (get-loop-info-3 f)
+    0x0400 (get-loop-info-4 f)
     {
       :has-loop false
       :loop-start 0
