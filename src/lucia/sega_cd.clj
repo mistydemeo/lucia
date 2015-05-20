@@ -66,7 +66,7 @@
      ; loop-end is treated internally as samples, with left-right pairs being
      ; considered to be a single sample;
      ; for stereo audio, multiply this by two to get a true byte count
-     :loop-end (+ sector-size (if (= 2 channel-count) (* loop-end 2) loop-end))}))
+     :loop-end (if (= 2 channel-count) (* loop-end 2) loop-end)}))
 
 (defn- stereo?
   [header]
