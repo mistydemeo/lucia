@@ -63,8 +63,8 @@
     (if (>= (- offset 6) 0x2c) ; check for enough room in the header for loop data
       {
         :loop-flag (byte-tools/take-uint (byte-tools/read-bytes-be f 0x18 4))
-        :loop-start (byte-tools/take-uint (byte-tools/read-bytes-be f 0x1c 4))
-        :loop-end (byte-tools/take-uint (byte-tools/read-bytes-be f 0x24 4))
+        :loop-start (byte-tools/take-uint (byte-tools/read-bytes-be f 0x20 4))
+        :loop-end (byte-tools/take-uint (byte-tools/read-bytes-be f 0x28 4))
 
       }
       ; default
