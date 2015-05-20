@@ -219,9 +219,9 @@
                     loop-done? (= bytes-played (:loop-end loop-data))
                     new-loop-count (if loop-done? (inc loop-count) loop-count)
                     looping-done? (= loops loop-count)
-                    new-bytes-played (if (and loop-done? (not looping-done?))
+                    new-bytes-played (if (and (:has-loop loop-data) loop-done? (not looping-done?))
                       (:loop-start loop-data) (+ bytes-played (* channels frame-size)))]
-                (if loop-done?
+                (if (and (:has-loop loop-data) loop-done?)
                   (.seek input (:loop-start loop-data)))
                 (recur
                   history-samples
