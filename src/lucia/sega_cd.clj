@@ -120,7 +120,7 @@
                 new-loop-count (if loop-done? (inc loop-count) loop-count)
                 new-bytes-to-play (if loop-done?
                   ; bytes-to-play resets back to the duration of the loop if loop is over
-                  (:loop-end header-data)
+                  (- (:loop-end header-data) (:loop-start header-data))
                   (- bytes-to-play current-frame-size))]
             (if (and (not looping-done?) loop-done?)
               (do
