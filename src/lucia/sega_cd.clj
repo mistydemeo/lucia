@@ -110,25 +110,26 @@
   (let [input (new RandomAccessFile f "r")
         header-data (parse-header (read-frame input))]
     (loop [loop-count 1
-           bytes-to-play (:loop-end header-data)]
+           bytes-played 0]
       (let [decoded-frame (read-and-process-frame input header-data)]
         (if-not (nil? decoded-frame)
           (let [s16-frame (convert-frame-s8-to-s16 decoded-frame)
                 current-frame-size (alength decoded-frame)
-                loop-done? (< bytes-to-play current-frame-size)
+                delta (- (:loop-end header-data) bytes-played)
+                loop-done? (< delta current-frame-size)
                 looping-done? (= loops loop-count)
                 new-loop-count (if loop-done? (inc loop-count) loop-count)
-                new-bytes-to-play (if loop-done?
-                  ; bytes-to-play resets back to the duration of the loop if loop is over
-                  (- (:loop-end header-data) (:loop-start header-data))
-                  (- bytes-to-play current-frame-size))]
+                new-bytes-played (if loop-done?
+                  ; bytes-played resets back to the duration of the loop if loop is over
+                  (:loop-start header-data)
+                  (+ bytes-played current-frame-size))]
             (if (and (not looping-done?) loop-done?)
               (do
                 (.seek input (:loop-start header-data))
-                ; write double bytes-to-play because bytes-to-play
+                ; write double delta because delta
                 ; represents the size of the original 8-bit samples;
                 ; the actual block being written is double this size
-                (.write output s16-frame 0 (* 2 bytes-to-play)))
+                (.write output s16-frame 0 (* 2 delta)))
               ; if all loops have been played, just continue playing to end of file
               (.write output s16-frame 0 (alength s16-frame)))
-            (recur new-loop-count new-bytes-to-play))))))))
+            (recur new-loop-count new-bytes-played))))))))
