@@ -1,326 +1,230 @@
 ---
 # Saturn
-6286f38ee5bd296311b6728e825a30d7:
+e9129c9780831d5e7d68f86fb877aa3d:
   title: Regular battle
   type: adx
   filename: C005
-ad2629f20ca9bfa34f9bedad49b91183:
+867abd8f8e3286f3bbe90dc4def00068:
   title: Boss battle
   type: adx
   filename: C006
-5714544244fb83cb8a42591b3c842846:
+3c0f2e85c2301e42b61b676c28466277:
   title: Althena's Heroes battle
   type: adx
   filename: C007
-bcee76ae8bcf3bdb09dde7a7df6c7c7b:
+7bf82c94e429dcbe3c80fd217ff243c0:
   title: Eastern overworld
   type: adx
   filename: C008
-ad9017981731ec178ce7732ccd2c0a58:
+8b47a744fdf470f2d044d2387e1fc117:
   title: Promenade
   type: adx
   filename: C009
-7732f9a0c71cf7b313213f2186f0dd6f:
+4985c4c389cb38f3d14997ac6988bf5b:
   title: Field Towards Tomorrow
   type: adx
   filename: C010
-75a2d23c8ed179377f5faac529cdbe35:
+3e2f3282aa2171e3f9b8e0c359acce19:
   title: The Dragonship Destiny
   type: adx
   filename: C011
-3de7146aeb0905191b44f2fa2a1f3be9:
+88e42e62e5aec06b2a0ac1ef62b67aa4:
   title: Town
   type: adx
   filename: C012
-15276eb4e60728cb3d879d36cd49ec47:
+87f3e0020bf7903dd52c7ca49310ac9a:
   title: Street
   type: adx
   filename: C013
-01baa5834a857dc8ed3e212c004d6a8d:
+1fba2279c1d25789098a80bfa03d6684:
   title: Dalton
   type: adx
   filename: C014
-bca0b538263a570a80923ee8d43d5789:
+53985b1a970cc627e10b5f09d145136d:
   title: Holy City Pentagulia
   type: adx
   filename: C015
-9e513b1dbb1a849635510bd069befd47:
+afc794fcea179d6839fbc471fe9bf9ab:
   title: Sneaking on the Destiny
   type: adx
   filename: C016
-37b199b68f9d2e806cecd94104d645ef:
+1279b17ec1962cbd1c33efc8825a2fa8:
   title: Forest of Illusion
   type: adx
   filename: C017
-66a3e52fd1dad4abf4911a4fe53b8cb4:
+1782bd6ca22ba11f50d2955af740cefe:
   title: Meribian sewers
   type: adx
   filename: C018
-5cd10cad68a016beb81d0a97d13a1961:
+b5d67e904ea879d71bd767de83e72cd9:
   title: Dragon Caves
   type: adx
   filename: C019
-222a978c504ab937f14c8ae497f73538:
+2d824b1629ba2fde2f1d3c1824331a99:
   title: Footsteps of Decisive Battle
   type: adx
   filename: C020
-84d84cec265eca851d868429608f492d:
+d2022f4d17b2bff6245ac98e0e903c8a:
   title: Mystic Ruins
   type: adx
   filename: C021
 # Disc 1 and disc 2 both have this song, but with different hashes
-304aebc628b902e0623b882bd49ee8bd:
-  title: White Mask Funk
-  type: adx
-  filename: C022
-62a9ea7519b35e2409491c20aa3502db:
+# However, the first 8192 bytes are the same, so there is one entry
+47978c580c79f83178e4acf6b6711b37:
   title: White Mask Funk
   type: adx
   filename: C022
 # Files from C023 on are dummy data on disc 1
-4452d65fe1696b65aa721e1e4df4871a:
+cc6ee92812879b4e5626bb6ef9d65240:
   title: The Carnival
   type: adx
   filename: C023
-29bc6c3f37a5c38d56221dafabf01a3e:
+3f70d891c506d6f31e06a40a85301bd4:
   title: Zen Zone
   type: adx
   filename: C024
-a91c244f6e21e2b558cc8271573899fb:
+38309c8be2cee1dae7863aa5cd8130ad:
   title: Zophar battle - Lucia's theme
   type: adx
   filename: C025
-b6dfdee0c5a07e109e32a5023b7bd144:
+432c2ea1ce0cd6b33e391f9f582f7e65:
   title: Menu
   type: adx
   filename: C026
-c134bb29833d9b5c93fb5424fe9dfe57:
+c4063cb7c2944b359a73326a9d98b7a7:
   title: Lucia's theme
   type: adx
   filename: C027
-28e856826dcc499622dc448ce3a2e5c1:
+5a209d0ae7377e4d931964528a52a16c:
   title: Zophar Appears
   type: adx
   filename: C028
-c8bbc90effb867789217b3b4d975e11b:
+949fc398409bd2b3bced7e3094aaa3a0:
   title: Riding Gwyn's Boat
   type: adx
   filename: C029
-99c8d5696932d27c04dcbcfb2ab348d5:
+8fe7f89f9c97fb8510881e249cee972d:
   title: Lucia's theme (piano)
   type: adx
   filename: C030
-b3d0ffa177df05016b09e5cba0515bc4:
+ed324cc10bce15ce9936e71005b117b4:
   title: Sad violin theme
   type: adx
   filename: C031
-7ccf65d0768d2519ccb50e08454417ab:
+741333e07f2dba04fd4ea023222eaa7b:
   title: Trouble
   type: adx
   filename: C032
-34bce68c22b2d93489dcdc02de205ff4:
+5fb7941629d4901d04b9ae41e3b634b9:
   title: Ghaleon's Theme
   type: adx
   filename: C033
-ea2261220da3a782b6fb71267d91e53e:
+af7b4720745715736a32e40485023cd8:
   title: Dragon's Lair
   type: adx
   filename: C034
-374e6c31694ff14365ec121b6894533d:
+1c3b7e03054840c40c375072d690874a:
   title: Taben's Peak
   type: adx
   filename: C035
-20381111aadf7958c8ec81466d06cd39:
+edaa479d8a4856bb686610e56cb7f677:
   title: Horam
   type: adx
   filename: C036
-3c2bc10b46c3e6ef3b369ffeae2b9c73:
+7bee287119338647916a79cd53f4b13f:
   title: Water
   type: adx
   filename: C037
-d2aa6c99e7c8a330aff11dc5c4962635:
+00ff97d0cbe24116d0ec372f513ed332:
   title: Baby
   type: adx
   filename: C038
-2e69e7900a075fc54023d22ca276d112:
+40beaa82ad16a6a8a532c5c68dbb80ed:
   title: Wind
   type: adx
   filename: C039
-61b66317ef05b9595c4a251fbf8aaeab:
+a683e2b0aba3b8443bc23b9707d56f52:
   title: Sweet Victory
   type: adx
   filename: C040
-8b129ab86b3cb2af351f552e77e19cdc:
+3ca3367d77b91900426676bcfa5a106f:
   title: Bromide - Lucia and Hiro
   type: adx
   filename: C041
-1a7e93dd6508a78ca2e155d8f86b12e4:
+c09251948b95cd8727253d5acd9a9d19:
   title: Bromide - Lucia
   type: adx
   filename: C042
-b3b551a8911ff252fc1610ea301b1fa8:
+8e150d95f1a58c5cae76ee5c5699e4c1:
   title: Bromide - Mystere and Mauri
   type: adx
   filename: C043
-9685ebe850a153f4fb907dc138b67bf4:
+0a711e5855866557a22b83cdfa88ff9e:
   title: Bromide - Nall
   type: adx
   filename: C044
-61dec54f6dea1ce1a5649dc642b94289:
+9cbe5a2759f0f40251d3ba7205df4004:
   title: Bromide - Mauri and Ghaleon
   type: adx
   filename: C045
-e7df009f6141a63a99c0db21baa7f95b:
+e7a700d2a0445bd5144f32a708ef2e14:
   title: Bromide - Lemina
   type: adx
   filename: C046
-5c514d05fd1d11c77212915371ea6deb:
+15828ef3188d97ae9f6ed0d3c36c1072:
   title: Bromide - Jean
   type: adx
   filename: C047
-de23eb426d481018b5a164f74249b56b:
+00f71009ce64b3cb8c6f7b059a3446a1:
   title: Bromide - Silver Star Story
   type: adx
   filename: C048
-8e3aa49ba6c4f5f568386b00063b5a06:
+2b8f3261b0432087f764e89c55bf3e5e:
   title: Blue Spire Transmission Room
   type: adx
   filename: C049
-453d1e038405f7c70eec3cc4eaf8b342:
+75962e15fbc1dfb3754e9ba38533af50:
   title: Omni-Zophar
   type: adx
   filename: O050
-8a02359e9b555735f9fb35bae30e7904:
+33bfcf2d037d7e9f0e95748c3210ac67:
   title: Goddess of Lies
   type: adx
   filename: O051
-1fbba530431a73967608e43e4bdf94d3:
+2f8c72cf7a9d6d25f67fcf6ec0abbf27:
   title: Althena singing
   type: adx
   filename: O052
-990fb2fdcfbe0a4ef98c991bcb5e329a:
+cf22c03b6f5ef1fde39497451491034a:
   title: Zophar's Rebirth
   type: adx
   filename: O053
-c3e186e58e4f985295e113e30a565253:
+0cc6ba62651d82b06b366fd5416d3081:
   title: Wonderful Victory
   type: adx
   filename: O054
-ae57ee518f51d132e69848dc839a14d0:
+055af6518e035973189a8eb90850348f:
   title: Mystere's Theme
   type: adx
   filename: O055
-0df46aec336aa6f143fd86a7d2edbf32:
+ec22ce30d9851811cc6d16854ae63fb9:
   title: Desire
   type: adx
   filename: O056
-dc29ce7517107a7dfa22c81c3449f493:
+402aaffb673864cb49081fa80c2ae6cf:
   title: ???
   type: adx
   filename: O057
-65c1e7de877eb9d8ca3dd040aa54a5dc:
+de86c72eed857214e98a3e03164b91e6:
   title: Rondo of Light and Shadow
   type: adx
   filename: O058
-# All of these files come from disc 1, and consist of dummied-out data.
+# Most files on disc 1 consist of dummied-out data.
 # They're padded out to similar lengths to their counterparts on disc 2,
 # but consist solely of the letter "U" repeated over and over.
-# They're tracked here so that lucia can recognize them as coming from
+# This data is tracked here so that lucia can recognize them as coming from
 # the Lunar 2 disc.
-4452d65fe1696b65aa721e1e4df4871a:
-  title: Dummy data
-  type: none
-5e13b1624d833f3de09a4bb3c241e5d3:
-  title: Dummy data
-  type: none
-181c9b925f58743f8bef4d783e84e3d2:
-  title: Dummy data
-  type: none
-53cc83d66bebbaa0a8e9592e4b2443c5:
-  title: Dummy data
-  type: none
-500a833401067072a86f98bb4137541d:
-  title: Dummy data
-  type: none
-8a2a3794a5c9180280c30386b3c3b0c1:
-  title: Dummy data
-  type: none
-c9713f75740f713afb145168179b7abc:
-  title: Dummy data
-  type: none
-500ace419a1278e5c7258bfb9d193c61:
-  title: Dummy data
-  type: none
-1d6c6d33a866ed018b54a08fcd108460:
-  title: Dummy data
-  type: none
-cfbde913af7fbb8d204514ade2ba3c52:
-  title: Dummy data
-  type: none
-6088e497a4ab914fd2e9c7929eb93c60:
-  title: Dummy data
-  type: none
-dd81f54be100087d124e3f1386808c04:
-  title: Dummy data
-  type: none
-3ed180efd1418e4d454d9285b075e602:
-  title: Dummy data
-  type: none
-ede08f420f90d833996bc20dd8f7a562:
-  title: Dummy data
-  type: none
-20ec948c09007478dd3409d3be644c25:
-  title: Dummy data
-  type: none
-66946971870e87ab0cddcfed0460df5c:
-  title: Dummy data
-  type: none
-7c8acb90da0e54e6434bd3643a3929fb:
-  title: Dummy data
-  type: none
-8cb274929fead4f574426a11f8bf53b7:
-  title: Dummy data
-  type: none
-7720567a60a8ba3ffa5135d8e7c2d896:
-  title: Dummy data
-  type: none
-f6ee9dc8791ccf034bb33897d15fffac:
-  title: Dummy data
-  type: none
-6b6fd8fa07d10016efdba8d804ffacd4:
-  title: Dummy data
-  type: none
-ccbb26dba6494c580c2b32d285d93304:
-  title: Dummy data
-  type: none
-3e9bafc6b13ad4864ef9bed64ce96857:
-  title: Dummy data
-  type: none
-ef23d14ac86fd20a9d574e1019663aed:
-  title: Dummy data
-  type: none
-aaea563246603e65ef816e00d0ee6a0e:
-  title: Dummy data
-  type: none
-84b3c0e113880abc55e02f8979b8e8ef:
-  title: Dummy data
-  type: none
-301c4edb9b26f2ed4a37760ff1ad95ea:
-  title: Dummy data
-  type: none
-b9bf6ff06b1520bfe83f306d13942e36:
-  title: Dummy data
-  type: none
-5636bcd32d66f22991027457394bdeb0:
-  title: Dummy data
-  type: none
-d0150538de268869beffaca1f4764f67:
-  title: Dummy data
-  type: none
-8e45d4dce93dade6014770b08af8613c:
-  title: Dummy data
-  type: none
-5e13b1624d833f3de09a4bb3c241e5d3:
+c61bfca0558bd7cf452ba9352e336b2d:
   title: Dummy data
   type: none
 # Sega CD
