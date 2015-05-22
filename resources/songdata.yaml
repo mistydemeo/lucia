@@ -211,8 +211,15 @@ ec22ce30d9851811cc6d16854ae63fb9:
   title: Desire
   type: adx
   filename: O056
+# NOTE: This may be wrong
+#       This song does not exist in the Sega CD or PlayStation versions;
+#       however, the closest song to this in the Sega CD version is the
+#       version of Lucia's theme in the Master Zophar battle,
+#       which doesn't get a unique song in the PlayStation version.
+#       This is my best guess, since I can't actually verify it in-game
+#       without playing through the entire game.
 402aaffb673864cb49081fa80c2ae6cf:
-  title: ???
+  title: Master Zophar
   type: adx
   filename: O057
 de86c72eed857214e98a3e03164b91e6:
