@@ -180,6 +180,45 @@ e7a700d2a0445bd5144f32a708ef2e14:
   title: Blue Spire Transmission Room
   type: adx
   filename: C049
+# Filenames from O050 onward have different contents between discs 1 and 2
+# Disc 1
+54d934f5a827926cdf2024ab7b778785:
+  title: Magic Tester Battle Theme
+  type: adx
+  filename: O050
+6dddb1457ec4cc487d68d0ae806b701a:
+  title: Justice - Leo's Theme
+  type: adx
+  filename: O051
+664da37a9829bbf0860cc89f22125ea0:
+  title: "Wine, Women, & Song - Ronfar's theme"
+  type: adx
+  filename: O052
+e8a06157286ee1456e56fd67813fc15b:
+  title: Gypsy Heart - Jean's theme
+  type: adx
+  filename: O053
+83d81b08fad7120f306a9ae614dce952:
+  title: Holding On - Lemina's theme
+  type: adx
+  filename: O054
+4146d5c1681f65b7503fba621205ce19:
+  title: Nall's Theme
+  type: adx
+  filename: O055
+cb3f35241e9761e56824a4bd998c05a0:
+  title: Wind
+  type: adx
+  filename: O056
+5ce5b0283a99530eee2ae51fd6e4b1cd:
+  title: Crickets
+  type: adx
+  filename: O057
+a1ec43f4fc8fa19144c5e36a4474112e:
+  title: Prologue
+  type: adx
+  filename: O058
+# Disc 2
 75962e15fbc1dfb3754e9ba38533af50:
   title: Omni-Zophar
   type: adx
