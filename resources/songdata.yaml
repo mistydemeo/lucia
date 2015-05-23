@@ -68,13 +68,10 @@ d2022f4d17b2bff6245ac98e0e903c8a:
   title: Mystic Ruins
   type: adx
   filename: C021
-# Disc 1 and disc 2 both have this song, but with different hashes
-# However, the first 8192 bytes are the same, so there is one entry
 47978c580c79f83178e4acf6b6711b37:
   title: White Mask Funk
   type: adx
   filename: C022
-# Files from C023 on are dummy data on disc 1
 cc6ee92812879b4e5626bb6ef9d65240:
   title: The Carnival
   type: adx
@@ -226,14 +223,6 @@ de86c72eed857214e98a3e03164b91e6:
   title: Rondo of Light and Shadow
   type: adx
   filename: O058
-# Most files on disc 1 consist of dummied-out data.
-# They're padded out to similar lengths to their counterparts on disc 2,
-# but consist solely of the letter "U" repeated over and over.
-# This data is tracked here so that lucia can recognize them as coming from
-# the Lunar 2 disc.
-c61bfca0558bd7cf452ba9352e336b2d:
-  title: Dummy data
-  type: none
 # Sega CD
 # Data comes from foo_lunar2: https://bitbucket.org/kode54/foo_lunar2
 0e03e367d741abb665887b6a3bf94680:
