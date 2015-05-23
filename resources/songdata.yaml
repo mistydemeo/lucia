@@ -1,19 +1,19 @@
 ---
 # Saturn
 e9129c9780831d5e7d68f86fb877aa3d:
-  title: Regular battle
+  title: Brave Warriors (Battle Theme)
   type: adx
   filename: C005
 867abd8f8e3286f3bbe90dc4def00068:
-  title: Boss battle
+  title: Boss Battle
   type: adx
   filename: C006
 3c0f2e85c2301e42b61b676c28466277:
-  title: Althena's Heroes battle
+  title: Althena's Heroes Battle
   type: adx
   filename: C007
 7bf82c94e429dcbe3c80fd217ff243c0:
-  title: Eastern overworld
+  title: Exciting Journey (Eastern Overworld)
   type: adx
   filename: C008
 8b47a744fdf470f2d044d2387e1fc117:
@@ -37,7 +37,7 @@ e9129c9780831d5e7d68f86fb877aa3d:
   type: adx
   filename: C013
 1fba2279c1d25789098a80bfa03d6684:
-  title: Dalton
+  title: Blessed Town
   type: adx
   filename: C014
 53985b1a970cc627e10b5f09d145136d:
@@ -45,19 +45,19 @@ e9129c9780831d5e7d68f86fb877aa3d:
   type: adx
   filename: C015
 afc794fcea179d6839fbc471fe9bf9ab:
-  title: Sneaking on the Destiny
+  title: Melancholy Heart
   type: adx
   filename: C016
 1279b17ec1962cbd1c33efc8825a2fa8:
-  title: Forest of Illusion
+  title: Dangerous Ground
   type: adx
   filename: C017
 1782bd6ca22ba11f50d2955af740cefe:
-  title: Meribian sewers
+  title: Growing Fear
   type: adx
   filename: C018
 b5d67e904ea879d71bd767de83e72cd9:
-  title: Dragon Caves
+  title: Conquering the Cave
   type: adx
   filename: C019
 2d824b1629ba2fde2f1d3c1824331a99:
@@ -65,7 +65,7 @@ b5d67e904ea879d71bd767de83e72cd9:
   type: adx
   filename: C020
 d2022f4d17b2bff6245ac98e0e903c8a:
-  title: Mystic Ruins
+  title: Blue Spire
   type: adx
   filename: C021
 47978c580c79f83178e4acf6b6711b37:
@@ -77,19 +77,19 @@ cc6ee92812879b4e5626bb6ef9d65240:
   type: adx
   filename: C023
 3f70d891c506d6f31e06a40a85301bd4:
-  title: Zen Zone
+  title: Tournament
   type: adx
   filename: C024
 38309c8be2cee1dae7863aa5cd8130ad:
-  title: Zophar battle - Lucia's theme
+  title: Silver and Blue
   type: adx
   filename: C025
 432c2ea1ce0cd6b33e391f9f582f7e65:
-  title: Menu
+  title: At The Relief
   type: adx
   filename: C026
 c4063cb7c2944b359a73326a9d98b7a7:
-  title: Lucia's theme
+  title: Eternal Blue
   type: adx
   filename: C027
 5a209d0ae7377e4d931964528a52a16c:
@@ -97,19 +97,19 @@ c4063cb7c2944b359a73326a9d98b7a7:
   type: adx
   filename: C028
 949fc398409bd2b3bced7e3094aaa3a0:
-  title: Riding Gwyn's Boat
+  title: Come Sail Away
   type: adx
   filename: C029
 8fe7f89f9c97fb8510881e249cee972d:
-  title: Lucia's theme (piano)
+  title: Heart-Shaped Tears
   type: adx
   filename: C030
 ed324cc10bce15ce9936e71005b117b4:
-  title: Sad violin theme
+  title: Somber Memories
   type: adx
   filename: C031
 741333e07f2dba04fd4ea023222eaa7b:
-  title: Trouble
+  title: Tension
   type: adx
   filename: C032
 5fb7941629d4901d04b9ae41e3b634b9:
@@ -117,7 +117,7 @@ ed324cc10bce15ce9936e71005b117b4:
   type: adx
   filename: C033
 af7b4720745715736a32e40485023cd8:
-  title: Dragon's Lair
+  title: Between Dragons
   type: adx
   filename: C034
 1c3b7e03054840c40c375072d690874a:
@@ -125,7 +125,7 @@ af7b4720745715736a32e40485023cd8:
   type: adx
   filename: C035
 edaa479d8a4856bb686610e56cb7f677:
-  title: Horam
+  title: Honorable Horam
   type: adx
   filename: C036
 7bee287119338647916a79cd53f4b13f:
@@ -220,7 +220,7 @@ a1ec43f4fc8fa19144c5e36a4474112e:
   filename: O058
 # Disc 2
 75962e15fbc1dfb3754e9ba38533af50:
-  title: Omni-Zophar
+  title: Lucia vs Zophar ~The Final Battle~
   type: adx
   filename: O050
 33bfcf2d037d7e9f0e95748c3210ac67:
@@ -228,7 +228,7 @@ a1ec43f4fc8fa19144c5e36a4474112e:
   type: adx
   filename: O051
 2f8c72cf7a9d6d25f67fcf6ec0abbf27:
-  title: Althena singing
+  title: Golden Voice
   type: adx
   filename: O052
 cf22c03b6f5ef1fde39497451491034a:
