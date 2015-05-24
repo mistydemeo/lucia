@@ -262,7 +262,7 @@ de86c72eed857214e98a3e03164b91e6:
   title: Rondo of Light and Shadow
   type: adx
   filename: O058
-# Sega CD
+# Sega CD, English
 # Data comes from foo_lunar2: https://bitbucket.org/kode54/foo_lunar2
 0e03e367d741abb665887b6a3bf94680:
   title: Eastern Lunar Overworld Theme
@@ -1140,3 +1140,560 @@ e0ecca780b25d9d71269e68b96f80344:
   title: Outtakes
   type: pcm
   filename: RP264.PCM
+# Mega CD, Japanese
+034503f565412b1d7e4a157705a2a326:
+  title: "Sneaking on the Destiny (alternate, unused)"
+  type: pcm
+  filename: RP002.PCM
+d4c947bdcbcc3ed6f13f966f2cf5b11c:
+  title: Zophar Battle Theme (Japanese)
+  type: pcm
+  filename: RP009.PCM
+b744ba2310110423eb6fba3652feaf6e:
+  title: Final Zophar Battle Theme (Japanese)
+  type: pcm
+  filename: RP010.PCM
+4945ddeb6ea13f073b166fc226376277:
+  title: Master Zophar 6 (Japanese)
+  type: pcm
+  filename: RP016.PCM
+b5080f21d2e21f4d6c71e649156aa26f:
+  title: Master Zophar 7 (Japanese)
+  type: pcm
+  filename: RP017.PCM
+96996ebd07f2e0f26c514202b9f3637f:
+  title: Master Zophar 8 (Japanese)
+  type: pcm
+  filename: RP018.PCM
+7ac0e6da98e8fa782c90d3aadb47a83b:
+  title: Sneaking on the Destiny
+  type: pcm
+  filename: RP024.PCM
+ae18b1f554941e1173f95b3584862610:
+  title: Beneath Pentagulia
+  type: pcm
+  filename: RP025.PCM
+018ce4559fd9db4fc7ea2ca6470afc86:
+  title: Forest of Illusion
+  type: pcm
+  filename: RP026.PCM
+efd73ef6cfba13d5c24609346a0163eb:
+  title: Dragon Caves
+  type: pcm
+  filename: RP028.PCM
+4e4d1032366e7d4735d353394aa33ede:
+  title: Transmission Room Pulsating
+  type: pcm
+  filename: RP031.PCM
+3c6a2503bdbefd0f325d23ec99bfe39c:
+  title: Pentagulia
+  type: pcm
+  filename: RP036.PCM
+1c77bf1d37682d90895d1048614613fe:
+  title: Title Screen
+  type: pcm
+  filename: RP040.PCM
+c7e235d007bc7ac8c500f6aa26f97ec9:
+  title: Game Menu
+  type: pcm
+  filename: RP041.PCM
+77f20f940c2f7c538091ebce4293649d:
+  title: Blowing Wind
+  type: pcm
+  filename: RP045.PCM
+d7120f2a2ac331ebda0bfc56bf0be266:
+  title: Cave of Trials
+  type: pcm
+  filename: RP052.PCM
+1013761ea5d47f80b36b5cd53a111d41:
+  title: Tavern Theme
+  type: pcm
+  filename: RP054.PCM
+5bd8b478d0685f327cb72a75c6101ad6:
+  title: Hiro's Introduction (Japanese)
+  type: pcm
+  filename: RP060.PCM
+63fbfcebea647bd669630cdc91126570:
+  title: First Sight of the Destiny (Japanese)
+  type: pcm
+  filename: RP062.PCM
+c5674fb9c1e7809aa6005d5630966a33:
+  title: The Destiny leaves for the Blue Spire (Japanese)
+  type: pcm
+  filename: RP063.PCM
+f10cf18e856fc78c6ec44ba84e432ef4:
+  title: Something appears at the Blue Spire
+  type: pcm
+  filename: RP064.PCM
+afcda67b4f531011c7e4f67fd5147f2a:
+  title: Teleport to the top of the Blue Spire (Japanese)
+  type: pcm
+  filename: RP065.PCM
+8f3f50f346f08476d4f419c1cfa808c6:
+  title: Ruby sees the Transfer Crystal (Japanese)
+  type: pcm
+  filename: RP066.PCM
+35dbc09dabebc6e1032fab195bd786bb:
+  title: Ruby snaps Hiro out of it (Japanese)
+  type: pcm
+  filename: RP067.PCM
+c12d6ba4f32b3e749face2c02d7b9d74:
+  title: Lucia begins to glow (Japanese)
+  type: pcm
+  filename: RP068.PCM
+6625571b3c2973d65f33d9bf4bdae099:
+  title: Zophar strips away Lucia's power (Japanese)
+  type: pcm
+  filename: RP069.PCM
+a2697fcce6314f6d2a59f2b30e14786a:
+  title: Riding Gwyn's boat (slow)
+  type: pcm
+  filename: RP070.PCM
+19d03f2b37a7ecccef265aa6838899c6:
+  title: Ronfar gets angry (Japanese)
+  type: pcm
+  filename: RP071.PCM
+e8ff62c6d9afa11380c1046fa1d404bc:
+  title: Mauri's plague flashback (Japanese)
+  type: pcm
+  filename: RP073.PCM
+35a0d3c5601dfcbf78509feb74745c63:
+  title: Lucia singing on the Destiny (Japanese)
+  type: pcm
+  filename: RP074.PCM
+7e9a4bfa084640a83ccf64f0368baedb:
+  title: Lucia speaks with Leo in Dalton (Japanese)
+  type: pcm
+  filename: RP075.PCM
+354c3bb2b19a5c3c1144e9c2ba672ab6:
+  title: Lemina is angry at the tester's destruction (Japanese)
+  type: pcm
+  filename: RP078.PCM
+86ed4a338d08d04cda30f9dcd79fc006:
+  title: Lemina congratulates the group (Japanese)
+  type: pcm
+  filename: RP079.PCM
+e845cf1e04b8c7ee5caa5b396beeedf7:
+  title: Nauseating flight (Japanese)
+  type: pcm
+  filename: RP081.PCM
+005c277b974844e746cc3c8f6941aa80:
+  title: Resonating chamber
+  type: pcm
+  filename: RP082.PCM
+134a1748ed2cadee6469e5540a457ee0:
+  title: Ghaleon's appearance (Japanese)
+  type: pcm
+  filename: RP083.PCM
+d7894b04c98829c9536c6fcd945c6b82:
+  title: Ghaleon's introduction (Japanese)
+  type: pcm
+  filename: RP084.PCM
+13e1e0cbba150d5cefd12e733a3942c4:
+  title: Avalanche (Japanese)
+  type: pcm
+  filename: RP085.PCM
+816f92fc67256c2597f660bc162f4795:
+  title: Strange white cat (Japanese)
+  type: pcm
+  filename: RP086.PCM
+d532349f3521aaa34ab713f7b78aa008:
+  title: Encounter with the masked man (Japanese)
+  type: pcm
+  filename: RP088.PCM
+bdfa6e19bba1141258cf7178e60c8813:
+  title: Lemina tells Borgan to leave Vane (Japanese)
+  type: pcm
+  filename: RP089.PCM
+71d515c0d95dda9e2084784842e1513e:
+  title: Ruby concerned about Lucia on the Destiny (Japanese)
+  type: pcm
+  filename: RP091.PCM
+a74245b4d6b61213842eeab37bb9893f:
+  title: Lucia discovers Althena is a fake (Japanese)
+  type: pcm
+  filename: RP094.PCM
+5f7c3995f32eaa16f1b3fc205f606ee8:
+  title: Lucia doubting Althena's plan (Japanese)
+  type: pcm
+  filename: RP096.PCM
+2e658199d45e40dcdecd49ae435b6934:
+  title: Ghaleon talking to Lucia in Pentagulia Shrine (Japanese)
+  type: pcm
+  filename: RP097.PCM
+5241ea22f8a656c5f42f82e684d891aa:
+  title: Nall bragging to Ruby in White Dragon Cave (Japanese)
+  type: pcm
+  filename: RP099.PCM
+482f348edb579f6481a2e7c5d40c5a34:
+  title: Nall transformed (Japanese)
+  type: pcm
+  filename: RP100.PCM
+e0f49a291b1e8eccddb9f44e2fab7980:
+  title: Jean confronts Lunn (Japanese)
+  type: pcm
+  filename: RP102.PCM
+3d840c83d5bc12e1cd94963a9d247740:
+  title: Ronfar and Jean get dropped (Japanese)
+  type: pcm
+  filename: RP106.PCM
+26d52addf156be8e6284e0f9dee32b2b:
+  title: Lemina confronts Borgan (Japanese)
+  type: pcm
+  filename: RP107.PCM
+e6e4ef132bdb675429bf1266dd9a6649:
+  title: Mauri's Judgement (Japanese)
+  type: pcm
+  filename: RP111.PCM
+29546f894bf4a7f9e60e63636cb00849:
+  title: Ruby's empowerment (Japanese)
+  type: pcm
+  filename: RP112.PCM
+9009693b0b2c91228532168ffcddf0fb:
+  title: Ghaleon's crisis (Japanese)
+  type: pcm
+  filename: RP113.PCM
+f43d3b135c8c41733ff4549ee0bbc162:
+  title: Lucia summons the dragons (Japanese)
+  type: pcm
+  filename: RP116.PCM
+20bfdc9c061cb636851ce50c23eea64c:
+  title: Althena panics (Japanese)
+  type: pcm
+  filename: RP117.PCM
+29b8883f7e70892331fd73d7f1811a0b:
+  title: Meeting Nall in the Goddess Tower (Japanese)
+  type: pcm
+  filename: RP118.PCM
+92041de3093b381894c6c3a6fb87c565:
+  title: Lucia discovers Luna's recording (Japanese)
+  type: pcm
+  filename: RP119.PCM
+fa6c483f8cccc016c9d5b97c6084e373:
+  title: Lucia is abandoned (Japanese)
+  type: pcm
+  filename: RP120.PCM
+d11623d69ae8a406e586d03df1e95efa:
+  title: Rumbling
+  type: pcm
+  filename: RP121.PCM
+3df7ac8f41398d835e4e296f2e467094:
+  title: Water disappears (Japanese)
+  type: pcm
+  filename: RP122.PCM
+95a309fb987652f5845886a23e043da3:
+  title: Vane after the disaster
+  type: pcm
+  filename: RP124.PCM
+0388324c93625160b407c46aaced1a31:
+  title: Pentagulia dock
+  type: pcm
+  filename: RP125.PCM
+d51889d10e5c03ced524a9702c36228e:
+  title: Leo joins the group in Vane (Japanese)
+  type: pcm
+  filename: RP127.PCM
+e32c99a44eb8a8bd21dc8966507f271c:
+  title: Ghaleon on the roof (Japanese)
+  type: pcm
+  filename: RP128.PCM
+5b42b28b6985ac202dcdc7fc99bdcb3c:
+  title: Ghaleon's victory (Japanese)
+  type: pcm
+  filename: RP129.PCM
+0160257059d3cedf9c202858a90e56c1:
+  title: Humanity shines through (Japanese)
+  type: pcm
+  filename: RP130.PCM
+4a573c23e4083e9089ab06827e041227:
+  title: Ghaleon's redemption (Japanese)
+  type: pcm
+  filename: RP132.PCM
+8f83287ffa129bfafcbef8d166165c30:
+  title: Destiny charges to Zophar's Domain (unused Japanese full-party dialogue version)
+  type: pcm
+  filename: RP133.PCM
+acba06257893e96bc50e2d40c6ff24d3:
+  title: Destiny charges to Zophar's Domain (Japanese)
+  type: pcm
+  filename: RP134.PCM
+7e9c6a523e3ad750c6422a7a0d9b141f:
+  title: Showdown (unused)
+  type: pcm
+  filename: RP137.PCM
+1668580da92517a575d86f7894073e61:
+  title: Finding Lucia (Japanese)
+  type: pcm
+  filename: RP138.PCM
+42847479ec164a265b5e6e19988666f6:
+  title: Zophar revives (Japanese)
+  type: pcm
+  filename: RP139.PCM
+1ad763a52aec08eb7d0ae63b43052f87:
+  title: Zophar Battle Recovery (Japanese)
+  type: pcm
+  filename: RP140.PCM
+7be7f893468179bf75cc5cbcfb378ebd:
+  title: Omni Zophar defeated (Japanese)
+  type: pcm
+  filename: RP141.PCM
+6787725ae7411cb22eaaacb3642ea61c:
+  title: Zophar's death (Japanese)
+  type: pcm
+  filename: RP142.PCM
+598ce6d205d6ff67638d623985b385fd:
+  title: Hiro's victory (Japanese)
+  type: pcm
+  filename: RP143.PCM
+52f59d0335c2dfa9107b3a4b53a1f78b:
+  title: Hiro leaves Vane (Japanese)
+  type: pcm
+  filename: RP145.PCM
+7dd47575228dee111d5fcb69638bcdd2:
+  title: Lucia's theme (Japanese)
+  type: pcm
+  filename: RP146.PCM
+d9258db1aeb8ca78939988f20005ed39:
+  title: Lucia's farewell (Japanese)
+  type: pcm
+  filename: RP147.PCM
+f2c06754b64a89cef4aaa4e1baa81641:
+  title: Lucia's pendant (Japanese)
+  type: pcm
+  filename: RP148.PCM
+a84687e8d3670dd02870a4df606c2b66:
+  title: Hiro's determination (Japanese)
+  type: pcm
+  filename: RP149.PCM
+78020cb66a2f0adf6b39a83499be2276:
+  title: "Melancholy Heart (alternate, unused)"
+  type: pcm
+  filename: RP150.PCM
+66bce2707bcb0704336a660aada10392:
+  title: Zen Zone
+  type: pcm
+  filename: RP151.PCM
+aca88105f416779bf7624dae6e0f8e3d:
+  title: Ghaleon explaining his plot (Japanese)
+  type: pcm
+  filename: RP157.PCM
+0cdc0e402898d40df1943df1358def0c:
+  title: Azado monster summoning by priest
+  type: pcm
+  filename: RP158.PCM
+a88a50a381562ff0fc77cc689a4acc8a:
+  title: Repelled from the Goddess Tower
+  type: pcm
+  filename: RP160.PCM
+ab1520f656db2836ab036288041cc472:
+  title: Explosion
+  type: pcm
+  filename: RP162.PCM
+777a49c26e85a420ba386553d1d58ac8:
+  title: Lucia siezes Althena's power (Japanese)
+  type: pcm
+  filename: RP166.PCM
+b4836ecb9457160c3d40197f9673da35:
+  title: Pentagulia crumbling
+  type: pcm
+  filename: RP167.PCM
+7c26dff4ac74f006481c3390a5f53742:
+  title: Lemina's farewell (Japanese)
+  type: pcm
+  filename: RP169.PCM
+9c686136c3f6b28d2bb9403bb7622761:
+  title: Jean's farewell (Japanese)
+  type: pcm
+  filename: RP170.PCM
+da392ebea6f18776f66a592ad7525c39:
+  title: Leo's farewell (Japanese)
+  type: pcm
+  filename: RP171.PCM
+6fced171c1dcbe15e4a7cef31c6223df:
+  title: Ruby's farewell (Japanese)
+  type: pcm
+  filename: RP172.PCM
+e25ff2d16bf0508ccb8962e41453a50e:
+  title: Lucia leaves (Japanese)
+  type: pcm
+  filename: RP173.PCM
+4c0e8e6ba88a09512b8c60286f53ba20:
+  title: Lucia realizes her mission (Japanese)
+  type: pcm
+  filename: RP202.PCM
+477979bfe6eca5645591525808ac9fc6:
+  title: Lunar intro (Japanese)
+  type: pcm
+  filename: RP203.PCM
+1487690ee5aac56bd0ba18d6d75ffb9a:
+  title: Leo's introduction (Japanese)
+  type: pcm
+  filename: RP204.PCM
+af63be045994aded0e1a35437c9857f4:
+  title: Crystal glowing (Japanese)
+  type: pcm
+  filename: RP206.PCM
+2fed6257fd75d74b24c2c05026e90bc9:
+  title: Lucia sees the sky of Lunar (Japanese)
+  type: pcm
+  filename: RP207.PCM
+712ee7d467f994bfc35bd6288933d193:
+  title: Lucia is sick (Japanese)
+  type: pcm
+  filename: RP208.PCM
+f617d135a0092da65573c46b285bb822:
+  title: Lucia leaves for Pentagulia (Japanese)
+  type: pcm
+  filename: RP211.PCM
+9bfc0f861675ebb1e8a5932395586692:
+  title: Jean's alluring dance music (Japanese)
+  type: pcm
+  filename: RP212.PCM
+c6133483b65eae5f00d55ac1c6a08869:
+  title: Lemina's introduction (Japanese)
+  type: pcm
+  filename: RP213.PCM
+96df405271f8c135276aa0b3190e0399:
+  title: Trying on disguises (Japanese)
+  type: pcm
+  filename: RP214.PCM
+35a917384ae6ffa706b5a1d2457b4f57:
+  title: Punching out perverts (Japanese)
+  type: pcm
+  filename: RP215.PCM
+b8461b0302560021bdece8c2dfa1c5d9:
+  title: Holographic recording
+  type: pcm
+  filename: RP217.PCM
+554d7669ac40abe1bcccc04f9b4dcaba:
+  title: Ghaleon appears (Japanese)
+  type: pcm
+  filename: RP218.PCM
+577f339a4dcb08d7f278c8b23e1a6f54:
+  title: Lunn's introduction (Japanese)
+  type: pcm
+  filename: RP219.PCM
+f110a6f307c80e06655cd59b1554e318:
+  title: Seeing Taben's peak
+  type: pcm
+  filename: RP220.PCM
+f1c4912b79272905404c533d00cfff3d:
+  title: Nall's introduction (Japanese)
+  type: pcm
+  filename: RP221.PCM
+5279de249f33b43c6f5aeac306add412:
+  title: Lucia in the spring (Japanese)
+  type: pcm
+  filename: RP222.PCM
+ff416476e808abfda30db4d0b165e3d9:
+  title: Borgan's introduction (Japanese)
+  type: pcm
+  filename: RP223.PCM
+1cf3bb8e98dd0c576ee16e515246d061:
+  title: Lemina crying (Japanese)
+  type: pcm
+  filename: RP224.PCM
+8f8732b5102f59ff4c986f692e9d32b6:
+  title: Mauri's introduction (Japanese)
+  type: pcm
+  filename: RP225.PCM
+b13f055c9719b6cbb98b48b2a90751b6:
+  title: Lucia on the Destiny (Japanese)
+  type: pcm
+  filename: RP226.PCM
+70b30da4d0acf77d9766979e987fdb7f:
+  title: Ghaleon's welcome to Pentagulia (Japanese)
+  type: pcm
+  filename: RP228.PCM
+01ad42ecb68475a5e5674fa6b6e0bae3:
+  title: Althena's introduction (Japanese)
+  type: pcm
+  filename: RP229.PCM
+49fccf783d35a40c5e00c89c3e01eecf:
+  title: Ghaleon shooting down Lucia's hopes (Japanese)
+  type: pcm
+  filename: RP230.PCM
+e53213272be2f1687083507c614c2f05:
+  title: Jean's destiny (Japanese)
+  type: pcm
+  filename: RP233.PCM
+63af6b303af011c8bd32e427c05cdac9:
+  title: Lunn at the tournament (Japanese)
+  type: pcm
+  filename: RP234.PCM
+928441432903397f2af91759f4104324:
+  title: Challenging Borgan (Japanese)
+  type: pcm
+  filename: RP237.PCM
+29ffafba1e3a0230c9b3139ca93e72a0:
+  title: Mauri in Serak Palace (Japanese)
+  type: pcm
+  filename: RP239.PCM
+c2e4d2ffc4f22189f7d3ed02fced5a4f:
+  title: Dragons destroying Pentagulia (Japanese)
+  type: pcm
+  filename: RP243.PCM
+067293feaeffcd0dfd0bf008eaa82a2c:
+  title: Luna's Introduction (Japanese)
+  type: pcm
+  filename: RP244.PCM
+5827e18e511fb44add8001832b56556e:
+  title: Luna's Story 1 (Japanese)
+  type: pcm
+  filename: RP245.PCM
+09b7903d27a40a351faa6174f5243e16:
+  title: Zophar wreaking havoc (Japanese)
+  type: pcm
+  filename: RP247.PCM
+7ef81229b9619f34adbc97cc79014b04:
+  title: Lucia confronts Zophar (Japanese)
+  type: pcm
+  filename: RP248.PCM
+181284f5242f3490eb83cf5efe54daee:
+  title: Zophar gloats at the top of his tower (Japanese)
+  type: pcm
+  filename: RP249.PCM
+12a1c77d5ce65a0ef3143109d71f50b2:
+  title: Ghaleon taunting Hiro (Japanese)
+  type: pcm
+  filename: RP250.PCM
+189f7d1684882ec56e12a8e0224ab1ee:
+  title: Ghaleon's atonement (Japanese)
+  type: pcm
+  filename: RP251.PCM
+7733fce6ac0c2e2e454ffafc13eb290f:
+  title: Friends' confidence (Japanese)
+  type: pcm
+  filename: RP252.PCM
+2f56ebab150c6838257b4117e027e912:
+  title: Ghaleon's farewell (Japanese)
+  type: pcm
+  filename: RP253.PCM
+018a4639745cce8c83c72fd335c9d7af:
+  title: Lucia imprisoned (Japanese)
+  type: pcm
+  filename: RP254.PCM
+6b25e30991cbf3e63e9f5fc812be2829:
+  title: Zophar's welcome (Japanese)
+  type: pcm
+  filename: RP255.PCM
+69f68e6c914c36b69195902ee3b65b1c:
+  title: Hiro and Lucia (Japanese)
+  type: pcm
+  filename: RP256.PCM
+25b113e98b0eb034322359f472b318a5:
+  title: Lucia's farewell (Japanese)
+  type: pcm
+  filename: RP257.PCM
+9f27e85ed644ced79dbf3fe24aafecdd:
+  title: Ruby helps Hiro (Japanese)
+  type: pcm
+  filename: RP258.PCM
+dcb0909fc6c72c0d7e438ad76a000833:
+  title: Hiro finds Lucia (Japanese)
+  type: pcm
+  filename: RP260.PCM
+4a3bcd361c00832e25936b4b4e7c16a9:
+  title: Luna's Story 2 (Japanese)
+  type: pcm
+  filename: RP261.PCM
