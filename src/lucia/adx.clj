@@ -3,7 +3,7 @@
    The [MultimediaWiki](http://wiki.multimedia.cx/index.php?title=CRI_ADX_ADPCM), [vgmstream](http://hcs64.com/vgmstream.html) and [FFmpeg](http://ffmpeg.org/) were used as references."
   (:require [lucia.byte-tools :as byte-tools])
   (:require [clojure.java.io :as io])
-  (:import (java.nio ByteBuffer))
+  (:import (java.nio ByteBuffer ByteOrder))
   (:import (java.io RandomAccessFile)))
 
 (defn get-stream-offset
@@ -203,6 +203,7 @@
       output-buffer (ByteBuffer/allocate (* (count history-samples) (* 4 (- (alength frame-buffer) 2))))
       [decoded-samples new-history-samples] (read-interleaved-samples stream frame-buffer frame-size history-samples coefficients)
     ]
+    (.order output-buffer ByteOrder/LITTLE_ENDIAN)
     (doseq [sample (apply interleave decoded-samples)]
       (.putShort output-buffer sample))
     (.write output (.array output-buffer) 0 (.capacity output-buffer))

@@ -1,7 +1,7 @@
 (ns lucia.sega-cd
   (:require [lucia.byte-tools :as byte-tools])
   (:require [clojure.java.io :as io])
-  (:import (java.nio ByteBuffer))
+  (:import (java.nio ByteBuffer ByteOrder))
   (:import (java.io RandomAccessFile)))
 
 ; Value provided by kode54; "determined from the PCM chip's base clock divided by the rate value the game uses"
@@ -89,6 +89,7 @@
   [frame]
   (let [buffer (ByteBuffer/allocate (* 2 (alength frame)))
         s16-frame (map convert-byte-s8-to-s16 frame)]
+    (.order buffer ByteOrder/LITTLE_ENDIAN)
     (doseq [sample s16-frame]
       (.putShort buffer sample))
     (.array buffer)))
