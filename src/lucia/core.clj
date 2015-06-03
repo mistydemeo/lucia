@@ -7,7 +7,7 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (let [song-file (io/file (io/resource "flute-alto-lick.adx"))
+  (let [song-file (io/file (or (first args) (io/resource "flute-alto-lick.adx")))
         sample-rate (adx/get-sample-rate song-file)
         channel-count (adx/get-channel-count song-file)
         audio-format (new AudioFormat AudioFormat$Encoding/PCM_SIGNED sample-rate 16 channel-count (* 2 channel-count) sample-rate false)
