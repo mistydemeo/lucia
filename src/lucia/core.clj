@@ -12,4 +12,6 @@
         channel-count (adx/get-channel-count song-file)
         audio-format (new AudioFormat AudioFormat$Encoding/PCM_SIGNED sample-rate 16 channel-count (* 2 channel-count) sample-rate false)
         output (AudioSystem/getSourceDataLine audio-format)]
+        (.open output audio-format)
+        (.start output)
         (adx/decode-file song-file output)))
