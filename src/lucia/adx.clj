@@ -4,8 +4,7 @@
   (:require [lucia.byte-tools :as byte-tools])
   (:require [clojure.java.io :as io])
   (:import (java.nio ByteBuffer ByteOrder))
-  (:import (java.io RandomAccessFile))
-  (:import (javax.sound.sampled SourceDataLine)))
+  (:import (java.io RandomAccessFile)))
 
 (defn get-stream-offset
   "Returns the offset from the beginning of the file at which the stream content begins.
@@ -207,7 +206,7 @@
     (.order output-buffer ByteOrder/LITTLE_ENDIAN)
     (doseq [sample (apply interleave decoded-samples)]
       (.putShort output-buffer sample))
-    (.write #^SourceDataLine output (.array output-buffer) 0 (.capacity output-buffer))
+    (.write output (.array output-buffer) 0 (.capacity output-buffer))
     new-history-samples))
 
 (defn decode-file
