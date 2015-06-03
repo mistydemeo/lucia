@@ -5,6 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [
     [org.clojure/clojure "1.6.0"]
+    [circleci/clj-yaml "0.5.3"]
+    [pandect "0.5.2"]
   ]
   :main ^:skip-aot lucia.core
   :target-path "target/%s"
