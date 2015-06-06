@@ -1,8 +1,8 @@
 (ns lucia.core
   (:gen-class)
-  (require [clojure.java.io :as io])
-  (require [clj-yaml.core :as yaml])
-  (require [pandect.algo.md5 :refer [md5]]))
+  (require [clojure.java.io :as io]
+           [clj-yaml.core :as yaml]
+           [pandect.algo.md5 :refer [md5]]))
 
 (def songdata
   (yaml/parse-string (io/input-stream (io/resource "songdata.yaml"))))

@@ -1,10 +1,10 @@
 (ns lucia.adx
   "Provides functions to identify, read metadata from, and decode CRI ADX ADPCM files.
    The [MultimediaWiki](http://wiki.multimedia.cx/index.php?title=CRI_ADX_ADPCM), [vgmstream](http://hcs64.com/vgmstream.html) and [FFmpeg](http://ffmpeg.org/) were used as references."
-  (:require [lucia.byte-tools :as byte-tools])
-  (:require [clojure.java.io :as io])
-  (:import (java.nio ByteBuffer ByteOrder))
-  (:import (java.io RandomAccessFile)))
+  (:require [lucia.byte-tools :as byte-tools]
+            [clojure.java.io :as io])
+  (:import (java.nio ByteBuffer ByteOrder)
+           (java.io RandomAccessFile)))
 
 (defn get-stream-offset
   "Returns the offset from the beginning of the file at which the stream content begins.

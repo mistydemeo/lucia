@@ -1,8 +1,8 @@
 (ns lucia.sega-cd
-  (:require [lucia.byte-tools :as byte-tools])
-  (:require [clojure.java.io :as io])
-  (:import (java.nio ByteBuffer ByteOrder))
-  (:import (java.io RandomAccessFile)))
+  (:require [lucia.byte-tools :as byte-tools]
+            [clojure.java.io :as io])
+  (:import (java.nio ByteBuffer ByteOrder)
+           (java.io RandomAccessFile)))
 
 ; Value provided by kode54; "determined from the PCM chip's base clock divided by the rate value the game uses"
 ; This is double the native value, 16282, because the empty 0-byte samples are not filtered out
