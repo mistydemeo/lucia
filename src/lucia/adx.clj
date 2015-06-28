@@ -27,6 +27,10 @@
       (= 0x2863 (byte-tools/take-ushort (byte-tools/read-bytes-be f (- offset 6) 2))) ; "(c"
       (= 0x29435249 (byte-tools/take-uint (byte-tools/read-bytes-be f (- offset 4) 4)))))) ; ")CRI"
 
+(defn file-valid?
+  [f]
+  (and (header-valid? f) (signature-valid? f)))
+
 (defn get-encoding-type
   "Returns the encoding type of the ADX file.
   Normal values are:

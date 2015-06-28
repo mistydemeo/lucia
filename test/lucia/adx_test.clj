@@ -13,7 +13,8 @@
 (deftest adx-test
   (testing "it should be able to validate the file"
     (is (true? (adx/header-valid? mono-test-file)))
-    (is (true? (adx/signature-valid? mono-test-file))))
+    (is (true? (adx/signature-valid? mono-test-file)))
+    (is (true? (adx/file-valid? mono-test-file))))
 
   ; TODO obtain samples of more encoding types
   (testing "it should be able to determine the encoding type"
