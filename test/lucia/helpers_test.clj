@@ -1,11 +1,11 @@
-(ns lucia.core-test
+(ns lucia.helpers-test
   (:require [clojure.test :refer :all]
             [clojure.java.io :as io]
-            [lucia.core :as core]))
+            [lucia.helpers :as helpers]))
 
 (def mono-test-file
   (io/file (io/resource "flute-alto-lick-mono.adx")))
 
-(deftest core-test
+(deftest helpers-test
   (testing "it should return nil when attempting to identify an unknown file"
-    (is (nil? (core/identify mono-test-file)))))
+    (is (nil? (helpers/identify mono-test-file)))))
